@@ -28,30 +28,58 @@ class ProfileDetectionService {
     }
 
     private func detectChromiumProfiles(for browserType: BrowserType) -> [BrowserProfile] {
-        guard let folderName = browserType.applicationSupportFolder else { return [] }
+        print("[Profile] Detecting for \(browserType.rawValue)")
+
+        guard let folderName = browserType.applicationSupportFolder else {
+            print("[Profile] No folder name for \(browserType.rawValue)")
+            return []
+        }
 
         let appSupport = FileManager.default.homeDirectoryForCurrentUser
             .appendingPathComponent("Library/Application Support")
             .appendingPathComponent(folderName)
 
         let localStatePath = appSupport.appendingPathComponent("Local State")
+        print("[Profile] Path: \(localStatePath.path)")
 
-        guard FileManager.default.fileExists(atPath: localStatePath.path),
-              let data = try? Data(contentsOf: localStatePath),
-              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let profileInfo = json["profile"] as? [String: Any],
-              let infoCache = profileInfo["info_cache"] as? [String: Any] else {
+        guard FileManager.default.fileExists(atPath: localStatePath.path) else {
+            print("[Profile] File not found at \(localStatePath.path)")
             return []
         }
+
+        guard let data = try? Data(contentsOf: localStatePath) else {
+            print("[Profile] Failed to read data from \(localStatePath.path)")
+            return []
+        }
+        print("[Profile] Read \(data.count) bytes")
+
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            print("[Profile] Failed to parse JSON")
+            return []
+        }
+
+        guard let profileInfo = json["profile"] as? [String: Any] else {
+            print("[Profile] No 'profile' key in JSON")
+            return []
+        }
+
+        guard let infoCache = profileInfo["info_cache"] as? [String: Any] else {
+            print("[Profile] No 'info_cache' in profile")
+            return []
+        }
+
+        print("[Profile] Found \(infoCache.count) profiles in info_cache")
 
         var profiles: [BrowserProfile] = []
 
         for (directoryName, profileData) in infoCache {
             guard let profileDict = profileData as? [String: Any],
                   let name = profileDict["name"] as? String else {
+                print("[Profile] Skipping \(directoryName) - invalid data")
                 continue
             }
 
+            print("[Profile] Adding profile: \(name) (\(directoryName))")
             let profile = BrowserProfile(
                 id: "\(browserType.rawValue)_\(directoryName)",
                 name: name,
@@ -67,6 +95,7 @@ class ProfileDetectionService {
             return p1.name.localizedCaseInsensitiveCompare(p2.name) == .orderedAscending
         }
 
+        print("[Profile] Returning \(profiles.count) profiles for \(browserType.rawValue)")
         return profiles
     }
 
