@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B01000001 /* BowzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000001; };
-		B01000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000002; };
-		B01000003 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000003; };
-		B01000004 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000004; };
-		B01000005 /* BrowserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000005; };
-		B01000006 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000006; };
-		B01000007 /* BrowserDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000007; };
-		B01000008 /* ProfileDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000008; };
-		B01000009 /* URLLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000009; };
-		B01000010 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000010; };
-		B01000011 /* PickerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000011; };
-		B01000012 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000012; };
-		B01000013 /* BrowserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000013; };
-		B01000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000014; };
+		4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B402F367AF000FD1533 /* AboutView.swift */; };
+		4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B422F367CAF00FD1533 /* SetupTab.swift */; };
+		4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */; };
+		4E5B5B472F367CC000FD1533 /* PreferencesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */; };
+		B01000001 /* BowzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000001 /* BowzerApp.swift */; };
+		B01000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000002 /* AppDelegate.swift */; };
+		B01000003 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000003 /* AppState.swift */; };
+		B01000004 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000004 /* Browser.swift */; };
+		B01000005 /* BrowserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000005 /* BrowserProfile.swift */; };
+		B01000006 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000006 /* Settings.swift */; };
+		B01000007 /* BrowserDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000007 /* BrowserDetectionService.swift */; };
+		B01000008 /* ProfileDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000008 /* ProfileDetectionService.swift */; };
+		B01000009 /* URLLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000009 /* URLLaunchService.swift */; };
+		B01000010 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000010 /* SettingsService.swift */; };
+		B01000011 /* PickerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000011 /* PickerWindowController.swift */; };
+		B01000012 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000012 /* PickerView.swift */; };
+		B01000013 /* BrowserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000013 /* BrowserItemView.swift */; };
+		B01000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000014 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E5B5B402F367AF000FD1533 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		4E5B5B422F367CAF00FD1533 /* SetupTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTab.swift; sourceTree = "<group>"; };
+		4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTab.swift; sourceTree = "<group>"; };
+		4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTab.swift; sourceTree = "<group>"; };
 		B00000001 /* BowzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerApp.swift; sourceTree = "<group>"; };
 		B00000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B00000003 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 				B00000011 /* PickerWindowController.swift */,
 				B00000012 /* PickerView.swift */,
 				B00000013 /* BrowserItemView.swift */,
+				4E5B5B402F367AF000FD1533 /* AboutView.swift */,
 			);
 			path = PickerWindow;
 			sourceTree = "<group>";
@@ -137,6 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				B00000014 /* SettingsView.swift */,
+				4E5B5B422F367CAF00FD1533 /* SetupTab.swift */,
+				4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */,
+				4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -217,15 +229,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */,
 				B01000001 /* BowzerApp.swift in Sources */,
+				4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */,
 				B01000002 /* AppDelegate.swift in Sources */,
 				B01000003 /* AppState.swift in Sources */,
 				B01000004 /* Browser.swift in Sources */,
+				4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */,
 				B01000005 /* BrowserProfile.swift in Sources */,
 				B01000006 /* Settings.swift in Sources */,
 				B01000007 /* BrowserDetectionService.swift in Sources */,
 				B01000008 /* ProfileDetectionService.swift in Sources */,
 				B01000009 /* URLLaunchService.swift in Sources */,
+				4E5B5B472F367CC000FD1533 /* PreferencesTab.swift in Sources */,
 				B01000010 /* SettingsService.swift in Sources */,
 				B01000011 /* PickerWindowController.swift in Sources */,
 				B01000012 /* PickerView.swift in Sources */,

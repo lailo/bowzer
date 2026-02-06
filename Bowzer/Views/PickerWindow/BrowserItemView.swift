@@ -60,3 +60,58 @@ struct BrowserItemView: View {
         }
     }
 }
+
+#Preview("Browser Item with Profile") {
+    let sampleBrowser = Browser(
+        id: "safari",
+        name: "Safari",
+        bundleIdentifier: "com.apple.Safari",
+        path: URL(fileURLWithPath: "/Applications/Safari.app"),
+        icon: NSWorkspace.shared.icon(forFile: "/Applications/Safari.app"),
+        profiles: [
+            BrowserProfile(id: "1", name: "Personal", directoryName: "Profile 1"),
+            BrowserProfile(id: "2", name: "Work", directoryName: "Profile 2")
+        ]
+    )
+    
+    let item = BrowserDisplayItem(
+        browser: sampleBrowser,
+        profile: sampleBrowser.profiles.first
+    )
+    
+    BrowserItemView(
+        item: item,
+        index: 1,
+        isHovered: false,
+        showLabel: true,
+        hasAnyLabels: true,
+        onSelect: { print("Selected") }
+    )
+    .padding()
+}
+
+#Preview("Browser Item Hovered") {
+    let sampleBrowser = Browser(
+        id: "chrome",
+        name: "Chrome",
+        bundleIdentifier: "com.google.Chrome",
+        path: URL(fileURLWithPath: "/Applications/Google Chrome.app"),
+        icon: NSWorkspace.shared.icon(forFile: "/Applications/Google Chrome.app"),
+        profiles: []
+    )
+    
+    let item = BrowserDisplayItem(
+        browser: sampleBrowser,
+        profile: nil
+    )
+    
+    BrowserItemView(
+        item: item,
+        index: 2,
+        isHovered: true,
+        showLabel: false,
+        hasAnyLabels: false,
+        onSelect: { print("Selected") }
+    )
+    .padding()
+}

@@ -18,31 +18,34 @@ struct PickerView: View {
     }
 
     var body: some View {
-        HStack(spacing: 8) {
-            ForEach(Array(displayItems.enumerated()), id: \.element.id) { index, item in
-                BrowserItemView(
-                    item: item,
-                    index: index + 1,
-                    isHovered: hoveredItem == item.id,
-                    showLabel: appState.settings.showProfileLabels && item.showProfileLabel,
-                    hasAnyLabels: hasAnyLabels,
-                    onSelect: {
-                        launchURL(with: item)
+        HStack(spacing: 0) {
+            Spacer()
+            HStack(spacing: 8) {
+                ForEach(Array(displayItems.enumerated()), id: \.element.id) { index, item in
+                    BrowserItemView(
+                        item: item,
+                        index: index + 1,
+                        isHovered: hoveredItem == item.id,
+                        showLabel: appState.settings.showProfileLabels && item.showProfileLabel,
+                        hasAnyLabels: hasAnyLabels,
+                        onSelect: {
+                            launchURL(with: item)
+                        }
+                    )
+                    .onHover { hovering in
+                        hoveredItem = hovering ? item.id : nil
                     }
-                )
-                .onHover { hovering in
-                    hoveredItem = hovering ? item.id : nil
                 }
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(white: 0.2))
+                    .shadow(color: .black.opacity(0.5), radius: 12, x: 0, y: 4)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(white: 0.2))
-                .shadow(color: .black.opacity(0.5), radius: 12, x: 0, y: 4)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 12))
         .background(KeyboardEventHandler(
             onEscape: onDismiss,
             onDigit: { digit in
@@ -103,4 +106,52 @@ class KeyboardHandlingView: NSView {
 
         super.keyDown(with: event)
     }
+}
+
+#Preview {
+    // Create mock browsers with icons
+    let safariIcon = NSWorkspace.shared.icon(forFile: "/Applications/Safari.app")
+    let chromeIcon = NSWorkspace.shared.icon(forFile: "/Applications/Google Chrome.app")
+    
+    let safari = Browser(
+        id: "safari",
+        name: "Safari",
+        bundleIdentifier: "com.apple.Safari",
+        path: URL(fileURLWithPath: "/Applications/Safari.app"),
+        icon: safariIcon,
+        profiles: []
+    )
+    
+    let chrome = Browser(
+        id: "chrome",
+        name: "Chrome",
+        bundleIdentifier: "com.google.Chrome",
+        path: URL(fileURLWithPath: "/Applications/Google Chrome.app"),
+        icon: chromeIcon,
+        profiles: [
+            BrowserProfile(id: "profile1", name: "Personal", directoryName: "Default"),
+            BrowserProfile(id: "profile2", name: "Work", directoryName: "Profile 1")
+        ]
+    )
+    
+    let firefox = Browser(
+        id: "firefox",
+        name: "Firefox",
+        bundleIdentifier: "org.mozilla.firefox",
+        path: URL(fileURLWithPath: "/Applications/Firefox.app"),
+        icon: NSWorkspace.shared.icon(forFile: "/Applications/Firefox.app"),
+        profiles: []
+    )
+    
+    // Create AppState with mock data
+    let appState = AppState()
+    appState.browsers = [safari, chrome, firefox]
+    appState.applyBrowserOrder()
+    
+    return PickerView(
+        appState: appState,
+        url: URL(string: "https://www.apple.com")!,
+        onDismiss: {}
+    )
+    .frame(width: 280, height: 100)
 }
