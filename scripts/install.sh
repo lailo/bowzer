@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 
 # Stop running instance
 echo "Stopping Bowzer..."
-pkill -f Bowzer 2>/dev/null || true
+pkill -x Bowzer 2>/dev/null || true
 sleep 0.5
 
 # Install
@@ -22,4 +22,4 @@ echo "Starting Bowzer..."
 open /Applications/Bowzer.app
 
 echo ""
-echo "✓ Bowzer installed and running"
+echo "Bowzer installed and running"

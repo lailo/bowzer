@@ -28,7 +28,7 @@ struct BrowsersTab: View {
 
                         Text(item.browser.name)
 
-                        if let profile = item.profile, item.showProfileLabel {
+                        if let profile = item.profile, item.browser.profiles.count > 1 {
                             Text("— \(profile.name)")
                                 .foregroundColor(.secondary)
                         }

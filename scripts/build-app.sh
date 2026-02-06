@@ -1,35 +1,34 @@
 #!/bin/bash
 
+set -e
+
 cd "$(dirname "$0")/.."
 
-# Build the Swift package
-echo "Building for production..."
-swift build -c release
-
-# Create app bundle structure
 APP_NAME="Bowzer"
 BUILD_DIR="build"
-APP_BUNDLE="$BUILD_DIR/$APP_NAME.app"
-CONTENTS_DIR="$APP_BUNDLE/Contents"
-MACOS_DIR="$CONTENTS_DIR/MacOS"
-RESOURCES_DIR="$CONTENTS_DIR/Resources"
 
-rm -rf "$APP_BUNDLE"
-mkdir -p "$MACOS_DIR"
-mkdir -p "$RESOURCES_DIR"
+# Clean previous build
+rm -rf "$BUILD_DIR"
+mkdir -p "$BUILD_DIR"
 
-# Copy executable
-cp ".build/release/$APP_NAME" "$MACOS_DIR/$APP_NAME"
+# Build with xcodebuild
+echo "Building for release..."
+xcodebuild -scheme "$APP_NAME" -configuration Release -derivedDataPath "$BUILD_DIR/DerivedData" build 2>&1 | grep -E "(error:|warning:|BUILD)" | grep -v "metadata extraction" || true
 
-# Copy Info.plist
-cp "Bowzer/Resources/Info.plist" "$CONTENTS_DIR/Info.plist"
+# Check if build succeeded
+APP_PATH="$BUILD_DIR/DerivedData/Build/Products/Release/$APP_NAME.app"
+if [ ! -d "$APP_PATH" ]; then
+    echo "Build failed - app not found at $APP_PATH"
+    exit 1
+fi
 
-# Create PkgInfo
-echo -n "APPL????" > "$CONTENTS_DIR/PkgInfo"
+# Copy to build directory root for easier access
+cp -r "$APP_PATH" "$BUILD_DIR/$APP_NAME.app"
 
-echo "Built $APP_BUNDLE"
+echo ""
+echo "Built $BUILD_DIR/$APP_NAME.app"
 echo ""
 echo "To install:"
-echo "  cp -r $APP_BUNDLE /Applications/"
+echo "  cp -r $BUILD_DIR/$APP_NAME.app /Applications/"
 echo ""
 echo "Then set Bowzer as default browser in System Settings > Desktop & Dock > Default web browser"

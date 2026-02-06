@@ -10,6 +10,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var pendingURL: URL?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Set as accessory app (menu bar only, doesn't quit on window close)
+        NSApp.setActivationPolicy(.accessory)
+
         // Register for URL events
         NSAppleEventManager.shared().setEventHandler(
             self,
@@ -125,5 +128,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         showSettings()
         return true
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return false
     }
 }
