@@ -5,14 +5,28 @@ class SettingsService {
     weak var appState: AppState?
 
     private let settingsKey = "BowzerSettings"
+    private let userDefaults: UserDefaultsProviding
+
+    init(userDefaults: UserDefaultsProviding = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+    }
 
     func loadSettings() {
-        guard let data = UserDefaults.standard.data(forKey: settingsKey),
+        guard let data = userDefaults.data(forKey: settingsKey),
               let settings = try? JSONDecoder().decode(AppSettings.self, from: data) else {
             return
         }
 
         appState?.settings = settings
+    }
+
+    // Testable version that returns settings
+    func loadSettingsResult() -> AppSettings? {
+        guard let data = userDefaults.data(forKey: settingsKey),
+              let settings = try? JSONDecoder().decode(AppSettings.self, from: data) else {
+            return nil
+        }
+        return settings
     }
 
     func saveSettings() {
@@ -21,7 +35,15 @@ class SettingsService {
             return
         }
 
-        UserDefaults.standard.set(data, forKey: settingsKey)
+        userDefaults.set(data, forKey: settingsKey)
+    }
+
+    // Testable version that takes settings as parameter
+    func saveSettings(_ settings: AppSettings) {
+        guard let data = try? JSONEncoder().encode(settings) else {
+            return
+        }
+        userDefaults.set(data, forKey: settingsKey)
     }
 
     func setLaunchAtLogin(_ enabled: Bool) {

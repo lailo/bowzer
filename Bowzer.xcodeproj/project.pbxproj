@@ -28,6 +28,10 @@
 		C00000001 /* BowzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000011 /* BowzerTests.swift */; };
 		C00000002 /* BowzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000021 /* BowzerUITests.swift */; };
 		C00000003 /* BowzerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000022 /* BowzerUITestsLaunchTests.swift */; };
+		D00000001 /* WorkspaceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000011 /* WorkspaceProviding.swift */; };
+		D00000002 /* FileManagerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000012 /* FileManagerProviding.swift */; };
+		D00000003 /* ProcessLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000013 /* ProcessLaunching.swift */; };
+		D00000004 /* UserDefaultsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000014 /* UserDefaultsProviding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		C00000020 /* BowzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00000021 /* BowzerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITests.swift; sourceTree = "<group>"; };
 		C00000022 /* BowzerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D00000011 /* WorkspaceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceProviding.swift; sourceTree = "<group>"; };
+		D00000012 /* FileManagerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerProviding.swift; sourceTree = "<group>"; };
+		D00000013 /* ProcessLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessLaunching.swift; sourceTree = "<group>"; };
+		D00000014 /* UserDefaultsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProviding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +157,24 @@
 		B02000004 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D02000001 /* Protocols */,
 				B00000007 /* BrowserDetectionService.swift */,
 				B00000008 /* ProfileDetectionService.swift */,
 				B00000009 /* URLLaunchService.swift */,
 				B00000010 /* SettingsService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D02000001 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D00000011 /* WorkspaceProviding.swift */,
+				D00000012 /* FileManagerProviding.swift */,
+				D00000013 /* ProcessLaunching.swift */,
+				D00000014 /* UserDefaultsProviding.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B02000005 /* Views */ = {
@@ -369,6 +389,10 @@
 				B01000012 /* PickerView.swift in Sources */,
 				B01000013 /* BrowserItemView.swift in Sources */,
 				B01000014 /* SettingsView.swift in Sources */,
+				D00000001 /* WorkspaceProviding.swift in Sources */,
+				D00000002 /* FileManagerProviding.swift in Sources */,
+				D00000003 /* ProcessLaunching.swift in Sources */,
+				D00000004 /* UserDefaultsProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

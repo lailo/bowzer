@@ -3,6 +3,12 @@ import Foundation
 class ProfileDetectionService {
     weak var appState: AppState?
 
+    private let fileManager: FileManagerProviding
+
+    init(fileManager: FileManagerProviding = FileManager.default) {
+        self.fileManager = fileManager
+    }
+
     func detectAllProfiles(for browsers: [Browser]) {
         guard let appState = appState else { return }
 
@@ -27,7 +33,19 @@ class ProfileDetectionService {
         appState.browsers = updatedBrowsers
     }
 
-    private func detectChromiumProfiles(for browserType: BrowserType) -> [BrowserProfile] {
+    // Testable version that returns profiles for a specific browser type
+    func detectProfiles(for browserType: BrowserType) -> [BrowserProfile] {
+        switch browserType.profileType {
+        case .chromium:
+            return detectChromiumProfiles(for: browserType)
+        case .firefox:
+            return detectFirefoxProfiles()
+        case .none:
+            return []
+        }
+    }
+
+    func detectChromiumProfiles(for browserType: BrowserType) -> [BrowserProfile] {
         print("[Profile] Detecting for \(browserType.rawValue)")
 
         guard let folderName = browserType.applicationSupportFolder else {
@@ -35,24 +53,29 @@ class ProfileDetectionService {
             return []
         }
 
-        let appSupport = FileManager.default.homeDirectoryForCurrentUser
+        let appSupport = fileManager.homeDirectoryForCurrentUser
             .appendingPathComponent("Library/Application Support")
             .appendingPathComponent(folderName)
 
         let localStatePath = appSupport.appendingPathComponent("Local State")
         print("[Profile] Path: \(localStatePath.path)")
 
-        guard FileManager.default.fileExists(atPath: localStatePath.path) else {
+        guard fileManager.fileExists(atPath: localStatePath.path) else {
             print("[Profile] File not found at \(localStatePath.path)")
             return []
         }
 
-        guard let data = try? Data(contentsOf: localStatePath) else {
+        guard let data = fileManager.contents(atPath: localStatePath.path) else {
             print("[Profile] Failed to read data from \(localStatePath.path)")
             return []
         }
         print("[Profile] Read \(data.count) bytes")
 
+        return parseChromiumLocalState(data: data, browserType: browserType)
+    }
+
+    // Extracted for testability with raw data
+    func parseChromiumLocalState(data: Data, browserType: BrowserType) -> [BrowserProfile] {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             print("[Profile] Failed to parse JSON")
             return []
@@ -99,15 +122,21 @@ class ProfileDetectionService {
         return profiles
     }
 
-    private func detectFirefoxProfiles() -> [BrowserProfile] {
-        let profilesIniPath = FileManager.default.homeDirectoryForCurrentUser
+    func detectFirefoxProfiles() -> [BrowserProfile] {
+        let profilesIniPath = fileManager.homeDirectoryForCurrentUser
             .appendingPathComponent("Library/Application Support/Firefox/profiles.ini")
 
-        guard FileManager.default.fileExists(atPath: profilesIniPath.path),
-              let contents = try? String(contentsOf: profilesIniPath, encoding: .utf8) else {
+        guard fileManager.fileExists(atPath: profilesIniPath.path),
+              let data = fileManager.contents(atPath: profilesIniPath.path),
+              let contents = String(data: data, encoding: .utf8) else {
             return []
         }
 
+        return parseFirefoxProfilesIni(contents: contents)
+    }
+
+    // Extracted for testability with raw contents
+    func parseFirefoxProfilesIni(contents: String) -> [BrowserProfile] {
         var profiles: [BrowserProfile] = []
         var currentProfile: (name: String?, path: String?, isRelative: Bool)?
 
