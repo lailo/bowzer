@@ -7,8 +7,4 @@ protocol FileManagerProviding {
     func contents(atPath path: String) -> Data?
 }
 
-extension FileManager: FileManagerProviding {
-    func contents(atPath path: String) -> Data? {
-        return self.contents(atPath: path)
-    }
-}
+extension FileManager: FileManagerProviding {}
