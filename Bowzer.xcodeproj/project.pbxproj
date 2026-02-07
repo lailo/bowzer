@@ -25,7 +25,27 @@
 		B01000012 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000012 /* PickerView.swift */; };
 		B01000013 /* BrowserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000013 /* BrowserItemView.swift */; };
 		B01000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000014 /* SettingsView.swift */; };
+		C00000001 /* BowzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000011 /* BowzerTests.swift */; };
+		C00000002 /* BowzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000021 /* BowzerUITests.swift */; };
+		C00000003 /* BowzerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000022 /* BowzerUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C00000030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B03000001;
+			remoteInfo = Bowzer;
+		};
+		C00000040 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B03000001;
+			remoteInfo = Bowzer;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4E5B5B402F367AF000FD1533 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -50,10 +70,29 @@
 		B00000016 /* Bowzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bowzer.entitlements; sourceTree = "<group>"; };
 		B00000017 /* Bowzer-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bowzer-Debug.entitlements"; sourceTree = "<group>"; };
 		B00000100 /* Bowzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00000010 /* BowzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00000011 /* BowzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerTests.swift; sourceTree = "<group>"; };
+		C00000020 /* BowzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00000021 /* BowzerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITests.swift; sourceTree = "<group>"; };
+		C00000022 /* BowzerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B00100001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C00100001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C00100002 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -67,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				B02000001 /* Bowzer */,
+				C02000001 /* BowzerTests */,
+				C02000002 /* BowzerUITests */,
 				B02000100 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,8 +200,27 @@
 			isa = PBXGroup;
 			children = (
 				B00000100 /* Bowzer.app */,
+				C00000010 /* BowzerTests.xctest */,
+				C00000020 /* BowzerUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C02000001 /* BowzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C00000011 /* BowzerTests.swift */,
+			);
+			path = BowzerTests;
+			sourceTree = "<group>";
+		};
+		C02000002 /* BowzerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C00000021 /* BowzerUITests.swift */,
+				C00000022 /* BowzerUITestsLaunchTests.swift */,
+			);
+			path = BowzerUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +243,42 @@
 			productReference = B00000100 /* Bowzer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C03000001 /* BowzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C04000001 /* Build configuration list for PBXNativeTarget "BowzerTests" */;
+			buildPhases = (
+				C03000002 /* Sources */,
+				C00100001 /* Frameworks */,
+				C03000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C03000010 /* PBXTargetDependency */,
+			);
+			name = BowzerTests;
+			productName = BowzerTests;
+			productReference = C00000010 /* BowzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C03000004 /* BowzerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C04000002 /* Build configuration list for PBXNativeTarget "BowzerUITests" */;
+			buildPhases = (
+				C03000005 /* Sources */,
+				C00100002 /* Frameworks */,
+				C03000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C03000020 /* PBXTargetDependency */,
+			);
+			name = BowzerUITests;
+			productName = BowzerUITests;
+			productReference = C00000020 /* BowzerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,6 +291,14 @@
 				TargetAttributes = {
 					B03000001 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					C03000001 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = B03000001;
+					};
+					C03000004 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = B03000001;
 					};
 				};
 			};
@@ -212,12 +316,28 @@
 			projectRoot = "";
 			targets = (
 				B03000001 /* Bowzer */,
+				C03000001 /* BowzerTests */,
+				C03000004 /* BowzerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B03000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03000006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,7 +372,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C03000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C00000001 /* BowzerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C00000002 /* BowzerUITests.swift in Sources */,
+				C00000003 /* BowzerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C03000010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B03000001 /* Bowzer */;
+			targetProxy = C00000030 /* PBXContainerItemProxy */;
+		};
+		C03000020 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B03000001 /* Bowzer */;
+			targetProxy = C00000040 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B04000101 /* Debug */ = {
@@ -427,6 +577,76 @@
 			};
 			name = Release;
 		};
+		C04000101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bowzer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bowzer";
+			};
+			name = Debug;
+		};
+		C04000102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bowzer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bowzer";
+			};
+			name = Release;
+		};
+		C04000201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Bowzer;
+			};
+			name = Debug;
+		};
+		C04000202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Bowzer;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -444,6 +664,24 @@
 			buildConfigurations = (
 				B04000201 /* Debug */,
 				B04000202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C04000001 /* Build configuration list for PBXNativeTarget "BowzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04000101 /* Debug */,
+				C04000102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C04000002 /* Build configuration list for PBXNativeTarget "BowzerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04000201 /* Debug */,
+				C04000202 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
