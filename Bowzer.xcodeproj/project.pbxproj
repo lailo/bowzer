@@ -32,6 +32,19 @@
 		D00000002 /* FileManagerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000012 /* FileManagerProviding.swift */; };
 		D00000003 /* ProcessLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000013 /* ProcessLaunching.swift */; };
 		D00000004 /* UserDefaultsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000014 /* UserDefaultsProviding.swift */; };
+		E00000001 /* MockWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000011 /* MockWorkspace.swift */; };
+		E00000002 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000012 /* MockFileManager.swift */; };
+		E00000003 /* MockProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000013 /* MockProcess.swift */; };
+		E00000004 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000014 /* MockUserDefaults.swift */; };
+		E00000005 /* ProfileDetectionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000015 /* ProfileDetectionServiceTests.swift */; };
+		E00000006 /* URLLaunchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000016 /* URLLaunchServiceTests.swift */; };
+		E00000007 /* SettingsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000017 /* SettingsServiceTests.swift */; };
+		E00000008 /* BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000018 /* BrowserTests.swift */; };
+		E00000009 /* BrowserProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000019 /* BrowserProfileTests.swift */; };
+		E00000010 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000020 /* AppSettingsTests.swift */; };
+		F00000001 /* SettingsWindowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000011 /* SettingsWindowPage.swift */; };
+		F00000002 /* PickerWindowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000012 /* PickerWindowPage.swift */; };
+		F00000003 /* AppleScriptHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000013 /* AppleScriptHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +96,19 @@
 		D00000012 /* FileManagerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerProviding.swift; sourceTree = "<group>"; };
 		D00000013 /* ProcessLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessLaunching.swift; sourceTree = "<group>"; };
 		D00000014 /* UserDefaultsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProviding.swift; sourceTree = "<group>"; };
+		E00000011 /* MockWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkspace.swift; sourceTree = "<group>"; };
+		E00000012 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
+		E00000013 /* MockProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProcess.swift; sourceTree = "<group>"; };
+		E00000014 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		E00000015 /* ProfileDetectionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetectionServiceTests.swift; sourceTree = "<group>"; };
+		E00000016 /* URLLaunchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLaunchServiceTests.swift; sourceTree = "<group>"; };
+		E00000017 /* SettingsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceTests.swift; sourceTree = "<group>"; };
+		E00000018 /* BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTests.swift; sourceTree = "<group>"; };
+		E00000019 /* BrowserProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserProfileTests.swift; sourceTree = "<group>"; };
+		E00000020 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
+		F00000011 /* SettingsWindowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowPage.swift; sourceTree = "<group>"; };
+		F00000012 /* PickerWindowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerWindowPage.swift; sourceTree = "<group>"; };
+		F00000013 /* AppleScriptHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,18 +255,71 @@
 		C02000001 /* BowzerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E02000001 /* Mocks */,
+				E02000002 /* Services */,
+				E02000003 /* Models */,
 				C00000011 /* BowzerTests.swift */,
 			);
 			path = BowzerTests;
 			sourceTree = "<group>";
 		};
+		E02000001 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E00000011 /* MockWorkspace.swift */,
+				E00000012 /* MockFileManager.swift */,
+				E00000013 /* MockProcess.swift */,
+				E00000014 /* MockUserDefaults.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E02000002 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E00000015 /* ProfileDetectionServiceTests.swift */,
+				E00000016 /* URLLaunchServiceTests.swift */,
+				E00000017 /* SettingsServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E02000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E00000018 /* BrowserTests.swift */,
+				E00000019 /* BrowserProfileTests.swift */,
+				E00000020 /* AppSettingsTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C02000002 /* BowzerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				F02000001 /* Pages */,
+				F02000002 /* Helpers */,
 				C00000021 /* BowzerUITests.swift */,
 				C00000022 /* BowzerUITestsLaunchTests.swift */,
 			);
 			path = BowzerUITests;
+			sourceTree = "<group>";
+		};
+		F02000001 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				F00000011 /* SettingsWindowPage.swift */,
+				F00000012 /* PickerWindowPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		F02000002 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F00000013 /* AppleScriptHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +480,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C00000001 /* BowzerTests.swift in Sources */,
+				E00000001 /* MockWorkspace.swift in Sources */,
+				E00000002 /* MockFileManager.swift in Sources */,
+				E00000003 /* MockProcess.swift in Sources */,
+				E00000004 /* MockUserDefaults.swift in Sources */,
+				E00000005 /* ProfileDetectionServiceTests.swift in Sources */,
+				E00000006 /* URLLaunchServiceTests.swift in Sources */,
+				E00000007 /* SettingsServiceTests.swift in Sources */,
+				E00000008 /* BrowserTests.swift in Sources */,
+				E00000009 /* BrowserProfileTests.swift in Sources */,
+				E00000010 /* AppSettingsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +499,9 @@
 			files = (
 				C00000002 /* BowzerUITests.swift in Sources */,
 				C00000003 /* BowzerUITestsLaunchTests.swift in Sources */,
+				F00000001 /* SettingsWindowPage.swift in Sources */,
+				F00000002 /* PickerWindowPage.swift in Sources */,
+				F00000003 /* AppleScriptHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
