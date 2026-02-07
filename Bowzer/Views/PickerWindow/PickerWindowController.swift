@@ -7,6 +7,7 @@ class PickerWindowController: NSObject, NSWindowDelegate {
     private let url: URL
     private var clickMonitor: Any?
     private var keyMonitor: Any?
+    var onOpenSettings: (() -> Void)?
 
     init(appState: AppState, url: URL) {
         self.appState = appState
@@ -93,10 +94,21 @@ class PickerWindowController: NSObject, NSWindowDelegate {
                 return nil
             }
 
+            // Comma key for settings
+            if event.characters == "," {
+                self.close()
+                self.onOpenSettings?()
+                return nil
+            }
+
             return event
         }
 
         panel.makeKeyAndOrderFront(nil)
+    }
+
+    func windowDidResignKey(_ notification: Notification) {
+        close()
     }
 
     private func selectBrowser(at index: Int) {
@@ -121,9 +133,5 @@ class PickerWindowController: NSObject, NSWindowDelegate {
         }
         window?.close()
         window = nil
-    }
-
-    func windowDidResignKey(_ notification: Notification) {
-        close()
     }
 }

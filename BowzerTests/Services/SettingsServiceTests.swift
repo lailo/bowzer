@@ -23,7 +23,8 @@ final class SettingsServiceTests: XCTestCase {
             browserOrder: ["browser1", "browser2"],
             hiddenBrowsers: ["browser3"],
             launchAtLogin: true,
-            showProfileLabels: false
+            showProfileLabels: false,
+            showMenuBarIcon: false
         )
 
         service.saveSettings(settings)
@@ -43,7 +44,8 @@ final class SettingsServiceTests: XCTestCase {
             browserOrder: ["browser1", "browser2"],
             hiddenBrowsers: ["browser3"],
             launchAtLogin: true,
-            showProfileLabels: false
+            showProfileLabels: false,
+            showMenuBarIcon: false
         )
         service.saveSettings(originalSettings)
 
@@ -55,6 +57,7 @@ final class SettingsServiceTests: XCTestCase {
         XCTAssertEqual(loadedSettings?.hiddenBrowsers, ["browser3"])
         XCTAssertEqual(loadedSettings?.launchAtLogin, true)
         XCTAssertEqual(loadedSettings?.showProfileLabels, false)
+        XCTAssertEqual(loadedSettings?.showMenuBarIcon, false)
     }
 
     func testLoadSettingsResult_ReturnsNilForCorruptedData() {
@@ -73,6 +76,7 @@ final class SettingsServiceTests: XCTestCase {
         XCTAssertEqual(settings.hiddenBrowsers, [])
         XCTAssertEqual(settings.launchAtLogin, false)
         XCTAssertEqual(settings.showProfileLabels, true)
+        XCTAssertEqual(settings.showMenuBarIcon, true)
     }
 
     // MARK: - Round-trip Tests
@@ -99,17 +103,19 @@ final class SettingsServiceTests: XCTestCase {
 
     func testSaveAndLoad_PreservesAllBooleanStates() {
         // Test with all true
-        let settingsAllTrue = AppSettings(browserOrder: [], hiddenBrowsers: [], launchAtLogin: true, showProfileLabels: true)
+        let settingsAllTrue = AppSettings(browserOrder: [], hiddenBrowsers: [], launchAtLogin: true, showProfileLabels: true, showMenuBarIcon: true)
         service.saveSettings(settingsAllTrue)
         var loaded = service.loadSettingsResult()
         XCTAssertEqual(loaded?.launchAtLogin, true)
         XCTAssertEqual(loaded?.showProfileLabels, true)
+        XCTAssertEqual(loaded?.showMenuBarIcon, true)
 
         // Test with all false
-        let settingsAllFalse = AppSettings(browserOrder: [], hiddenBrowsers: [], launchAtLogin: false, showProfileLabels: false)
+        let settingsAllFalse = AppSettings(browserOrder: [], hiddenBrowsers: [], launchAtLogin: false, showProfileLabels: false, showMenuBarIcon: false)
         service.saveSettings(settingsAllFalse)
         loaded = service.loadSettingsResult()
         XCTAssertEqual(loaded?.launchAtLogin, false)
         XCTAssertEqual(loaded?.showProfileLabels, false)
+        XCTAssertEqual(loaded?.showMenuBarIcon, false)
     }
 }

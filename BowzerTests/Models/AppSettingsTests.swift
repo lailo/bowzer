@@ -15,6 +15,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.hiddenBrowsers, [])
         XCTAssertEqual(decoded.launchAtLogin, false)
         XCTAssertEqual(decoded.showProfileLabels, true)
+        XCTAssertEqual(decoded.showMenuBarIcon, true)
     }
 
     func testEncodeDecode_PopulatedSettings() throws {
@@ -22,7 +23,8 @@ final class AppSettingsTests: XCTestCase {
             browserOrder: ["browser1", "browser2", "browser3"],
             hiddenBrowsers: ["browser4", "browser5"],
             launchAtLogin: true,
-            showProfileLabels: false
+            showProfileLabels: false,
+            showMenuBarIcon: false
         )
 
         let data = try JSONEncoder().encode(settings)
@@ -32,6 +34,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.hiddenBrowsers, ["browser4", "browser5"])
         XCTAssertEqual(decoded.launchAtLogin, true)
         XCTAssertEqual(decoded.showProfileLabels, false)
+        XCTAssertEqual(decoded.showMenuBarIcon, false)
     }
 
     func testEncodeDecode_WithSpecialCharacters() throws {
@@ -57,6 +60,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(settings.hiddenBrowsers, [])
         XCTAssertEqual(settings.launchAtLogin, false)
         XCTAssertEqual(settings.showProfileLabels, true)
+        XCTAssertEqual(settings.showMenuBarIcon, true)
     }
 
     // MARK: - Mutability Tests
@@ -87,5 +91,31 @@ final class AppSettingsTests: XCTestCase {
         settings.showProfileLabels = false
 
         XCTAssertEqual(settings.showProfileLabels, false)
+    }
+
+    func testShowMenuBarIcon_IsMutable() {
+        var settings = AppSettings()
+        settings.showMenuBarIcon = false
+
+        XCTAssertEqual(settings.showMenuBarIcon, false)
+    }
+
+    // MARK: - Backward Compatibility Tests
+
+    func testDecode_WithMissingShowMenuBarIcon_UsesDefaultTrue() throws {
+        // Simulate old settings JSON without showMenuBarIcon
+        let oldSettingsJSON = """
+        {
+            "browserOrder": ["browser1"],
+            "hiddenBrowsers": [],
+            "launchAtLogin": false,
+            "showProfileLabels": true
+        }
+        """.data(using: .utf8)!
+
+        let decoded = try JSONDecoder().decode(AppSettings.self, from: oldSettingsJSON)
+
+        XCTAssertEqual(decoded.showMenuBarIcon, true)
+        XCTAssertEqual(decoded.browserOrder, ["browser1"])
     }
 }

@@ -14,6 +14,21 @@ struct PreferencesTab: View {
                     }
                 ))
                 .accessibilityIdentifier("showProfileLabelsToggle")
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Toggle("Show menu bar icon", isOn: Binding(
+                        get: { appState.settings.showMenuBarIcon },
+                        set: { newValue in
+                            appState.settings.showMenuBarIcon = newValue
+                            appState.settingsService.saveSettings()
+                        }
+                    ))
+                    .accessibilityIdentifier("showMenuBarIconToggle")
+
+                    Text("Press , in the picker or reopen the app to access Settings")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             } header: {
                 Text("Display")
             }

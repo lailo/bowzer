@@ -29,15 +29,26 @@ final class PreferencesTabTests: XCTestCase {
         XCTAssertNotNil(toggle)
     }
 
-    func test_bothTogglesExist() throws {
+    func test_showMenuBarIconToggleExists() throws {
         let appState = TestDataFactory.makeAppStateWithSampleData()
 
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // Both toggles should be present
+        // Find the "Show menu bar icon" toggle
+        let toggle = try sut.inspect().find(text: "Show menu bar icon")
+        XCTAssertNotNil(toggle)
+    }
+
+    func test_allTogglesExist() throws {
+        let appState = TestDataFactory.makeAppStateWithSampleData()
+
+        let sut = PreferencesTab()
+            .environmentObject(appState)
+
+        // All three toggles should be present
         let toggles = try sut.inspect().findAll(ViewType.Toggle.self)
-        XCTAssertEqual(toggles.count, 2)
+        XCTAssertEqual(toggles.count, 3)
     }
 
     // MARK: - Section Header Tests

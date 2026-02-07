@@ -36,6 +36,7 @@ class SettingsService {
         }
 
         userDefaults.set(data, forKey: settingsKey)
+        NotificationCenter.default.post(name: .settingsDidChange, object: nil)
     }
 
     // Testable version that takes settings as parameter

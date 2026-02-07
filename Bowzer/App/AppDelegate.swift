@@ -8,6 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var aboutWindow: NSWindow?
     private var statusItem: NSStatusItem?
     private var pendingURL: URL?
+    private var settingsObserver: NSObjectProtocol?
 
     // Test mode flags
     private var isUITesting: Bool {
@@ -44,17 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Set as accessory app (menu bar only, doesn't quit on window close)
         NSApp.setActivationPolicy(.accessory)
 
-        // Skip URL event registration in UI testing mode to avoid conflicts
-        if !isUITesting {
-            // Register for URL events
-            NSAppleEventManager.shared().setEventHandler(
-                self,
-                andSelector: #selector(handleURLEvent(_:replyEvent:)),
-                forEventClass: AEEventClass(kInternetEventClass),
-                andEventID: AEEventID(kAEGetURL)
-            )
-        }
-
         // Initialize services
         appState.browserDetectionService.detectBrowsers()
         appState.profileDetectionService.detectAllProfiles(for: appState.browsers)
@@ -62,7 +52,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appState.applyBrowserOrder()
 
         // Set up menu bar
-        setupMenuBar()
+        updateMenuBarVisibility()
+
+        // Observe settings changes for menu bar visibility
+        settingsObserver = NotificationCenter.default.addObserver(
+            forName: .settingsDidChange,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.updateMenuBarVisibility()
+        }
 
         // Show picker if launched with testing flag
         if shouldShowPickerForTesting {
@@ -73,6 +72,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Show settings if launched with testing flag
         if shouldShowSettingsForTesting {
             showSettings()
+        }
+    }
+
+    private func updateMenuBarVisibility() {
+        if appState.settings.showMenuBarIcon {
+            if statusItem == nil {
+                setupMenuBar()
+            }
+        } else {
+            if let item = statusItem {
+                NSStatusBar.system.removeStatusItem(item)
+                statusItem = nil
+            }
         }
     }
 
@@ -93,16 +105,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem?.menu = menu
     }
 
-    @objc func handleURLEvent(_ event: NSAppleEventDescriptor, replyEvent: NSAppleEventDescriptor) {
-        guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
-              let url = URL(string: urlString) else {
-            return
-        }
-
-        pendingURL = url
-        showPicker(for: url)
-    }
-
     private func showPicker(for url: URL) {
         // Get cursor position
         let mouseLocation = NSEvent.mouseLocation
@@ -112,6 +114,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create and show new picker
         pickerWindowController = PickerWindowController(appState: appState, url: url)
+        pickerWindowController?.onOpenSettings = { [weak self] in
+            self?.showSettings()
+        }
         pickerWindowController?.showAtLocation(mouseLocation)
     }
 
@@ -173,6 +178,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         showSettings()
         return true
+    }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        guard let url = urls.first else { return }
+        pendingURL = url
+        showPicker(for: url)
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
