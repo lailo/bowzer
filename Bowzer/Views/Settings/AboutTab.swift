@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AboutView: View {
+struct AboutTab: View {
     private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
     private let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
 

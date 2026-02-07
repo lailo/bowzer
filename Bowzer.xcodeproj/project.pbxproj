@@ -48,6 +48,7 @@
 		B00000014 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B00000015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B00000016 /* Bowzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bowzer.entitlements; sourceTree = "<group>"; };
+		B00000017 /* Bowzer-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bowzer-Debug.entitlements"; sourceTree = "<group>"; };
 		B00000100 /* Bowzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,6 +80,7 @@
 				B02000005 /* Views */,
 				B02000006 /* Resources */,
 				B00000016 /* Bowzer.entitlements */,
+				B00000017 /* Bowzer-Debug.entitlements */,
 			);
 			path = Bowzer;
 			sourceTree = "<group>";
@@ -145,9 +147,9 @@
 		B02000008 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */,
 				B00000014 /* SettingsView.swift */,
 				4E5B5B422F367CAF00FD1533 /* SetupTab.swift */,
-				4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */,
 				4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */,
 			);
 			path = Settings;
@@ -376,7 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Bowzer/Bowzer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Bowzer/Bowzer-Debug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
