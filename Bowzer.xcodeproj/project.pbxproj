@@ -26,8 +26,6 @@
 		B01000013 /* BrowserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000013 /* BrowserItemView.swift */; };
 		B01000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000014 /* SettingsView.swift */; };
 		C00000001 /* BowzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000011 /* BowzerTests.swift */; };
-		C00000002 /* BowzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000021 /* BowzerUITests.swift */; };
-		C00000003 /* BowzerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000022 /* BowzerUITestsLaunchTests.swift */; };
 		D00000001 /* WorkspaceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000011 /* WorkspaceProviding.swift */; };
 		D00000002 /* FileManagerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000012 /* FileManagerProviding.swift */; };
 		D00000003 /* ProcessLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000013 /* ProcessLaunching.swift */; };
@@ -42,20 +40,17 @@
 		E00000008 /* BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000018 /* BrowserTests.swift */; };
 		E00000009 /* BrowserProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000019 /* BrowserProfileTests.swift */; };
 		E00000010 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000020 /* AppSettingsTests.swift */; };
-		F00000001 /* SettingsWindowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000011 /* SettingsWindowPage.swift */; };
-		F00000002 /* PickerWindowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000012 /* PickerWindowPage.swift */; };
-		F00000003 /* AppleScriptHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000013 /* AppleScriptHelper.swift */; };
+		V00000001 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = V00000002 /* ViewInspector */; };
+		V00000003 /* ViewTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000010 /* ViewTestHelpers.swift */; };
+		V00000004 /* ViewInspectable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000011 /* ViewInspectable+Extensions.swift */; };
+		V00000005 /* BrowserItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000012 /* BrowserItemViewTests.swift */; };
+		V00000006 /* PickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000013 /* PickerViewTests.swift */; };
+		V00000007 /* BrowsersTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000014 /* BrowsersTabTests.swift */; };
+		V00000008 /* PreferencesTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000015 /* PreferencesTabTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		C00000030 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B05000001 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B03000001;
-			remoteInfo = Bowzer;
-		};
-		C00000040 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B05000001 /* Project object */;
 			proxyType = 1;
@@ -89,9 +84,6 @@
 		B00000100 /* Bowzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00000010 /* BowzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00000011 /* BowzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerTests.swift; sourceTree = "<group>"; };
-		C00000020 /* BowzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C00000021 /* BowzerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITests.swift; sourceTree = "<group>"; };
-		C00000022 /* BowzerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D00000011 /* WorkspaceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceProviding.swift; sourceTree = "<group>"; };
 		D00000012 /* FileManagerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerProviding.swift; sourceTree = "<group>"; };
 		D00000013 /* ProcessLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessLaunching.swift; sourceTree = "<group>"; };
@@ -106,9 +98,12 @@
 		E00000018 /* BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTests.swift; sourceTree = "<group>"; };
 		E00000019 /* BrowserProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserProfileTests.swift; sourceTree = "<group>"; };
 		E00000020 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
-		F00000011 /* SettingsWindowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowPage.swift; sourceTree = "<group>"; };
-		F00000012 /* PickerWindowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerWindowPage.swift; sourceTree = "<group>"; };
-		F00000013 /* AppleScriptHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptHelper.swift; sourceTree = "<group>"; };
+		V00000010 /* ViewTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTestHelpers.swift; sourceTree = "<group>"; };
+		V00000011 /* ViewInspectable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewInspectable+Extensions.swift"; sourceTree = "<group>"; };
+		V00000012 /* BrowserItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserItemViewTests.swift; sourceTree = "<group>"; };
+		V00000013 /* PickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTests.swift; sourceTree = "<group>"; };
+		V00000014 /* BrowsersTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTabTests.swift; sourceTree = "<group>"; };
+		V00000015 /* PreferencesTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,13 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C00100002 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				V00000001 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +130,6 @@
 			children = (
 				B02000001 /* Bowzer */,
 				C02000001 /* BowzerTests */,
-				C02000002 /* BowzerUITests */,
 				B02000100 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -247,7 +235,6 @@
 			children = (
 				B00000100 /* Bowzer.app */,
 				C00000010 /* BowzerTests.xctest */,
-				C00000020 /* BowzerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,9 +245,23 @@
 				E02000001 /* Mocks */,
 				E02000002 /* Services */,
 				E02000003 /* Models */,
+				V02000001 /* ViewTests */,
 				C00000011 /* BowzerTests.swift */,
 			);
 			path = BowzerTests;
+			sourceTree = "<group>";
+		};
+		V02000001 /* ViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				V00000010 /* ViewTestHelpers.swift */,
+				V00000011 /* ViewInspectable+Extensions.swift */,
+				V00000012 /* BrowserItemViewTests.swift */,
+				V00000013 /* PickerViewTests.swift */,
+				V00000014 /* BrowsersTabTests.swift */,
+				V00000015 /* PreferencesTabTests.swift */,
+			);
+			path = ViewTests;
 			sourceTree = "<group>";
 		};
 		E02000001 /* Mocks */ = {
@@ -292,34 +293,6 @@
 				E00000020 /* AppSettingsTests.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C02000002 /* BowzerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F02000001 /* Pages */,
-				F02000002 /* Helpers */,
-				C00000021 /* BowzerUITests.swift */,
-				C00000022 /* BowzerUITestsLaunchTests.swift */,
-			);
-			path = BowzerUITests;
-			sourceTree = "<group>";
-		};
-		F02000001 /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				F00000011 /* SettingsWindowPage.swift */,
-				F00000012 /* PickerWindowPage.swift */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		F02000002 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F00000013 /* AppleScriptHelper.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,27 +329,12 @@
 				C03000010 /* PBXTargetDependency */,
 			);
 			name = BowzerTests;
+			packageProductDependencies = (
+				V00000002 /* ViewInspector */,
+			);
 			productName = BowzerTests;
 			productReference = C00000010 /* BowzerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C03000004 /* BowzerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C04000002 /* Build configuration list for PBXNativeTarget "BowzerUITests" */;
-			buildPhases = (
-				C03000005 /* Sources */,
-				C00100002 /* Frameworks */,
-				C03000006 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C03000020 /* PBXTargetDependency */,
-			);
-			name = BowzerUITests;
-			productName = BowzerUITests;
-			productReference = C00000020 /* BowzerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -395,10 +353,6 @@
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = B03000001;
 					};
-					C03000004 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = B03000001;
-					};
 				};
 			};
 			buildConfigurationList = B04000001 /* Build configuration list for PBXProject "Bowzer" */;
@@ -410,13 +364,15 @@
 				Base,
 			);
 			mainGroup = B02000000;
+			packageReferences = (
+				V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = B02000100 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B03000001 /* Bowzer */,
 				C03000001 /* BowzerTests */,
-				C03000004 /* BowzerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -430,13 +386,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C03000003 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C03000006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -490,18 +439,12 @@
 				E00000008 /* BrowserTests.swift in Sources */,
 				E00000009 /* BrowserProfileTests.swift in Sources */,
 				E00000010 /* AppSettingsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C03000005 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C00000002 /* BowzerUITests.swift in Sources */,
-				C00000003 /* BowzerUITestsLaunchTests.swift in Sources */,
-				F00000001 /* SettingsWindowPage.swift in Sources */,
-				F00000002 /* PickerWindowPage.swift in Sources */,
-				F00000003 /* AppleScriptHelper.swift in Sources */,
+				V00000003 /* ViewTestHelpers.swift in Sources */,
+				V00000004 /* ViewInspectable+Extensions.swift in Sources */,
+				V00000005 /* BrowserItemViewTests.swift in Sources */,
+				V00000006 /* PickerViewTests.swift in Sources */,
+				V00000007 /* BrowsersTabTests.swift in Sources */,
+				V00000008 /* PreferencesTabTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,11 +455,6 @@
 			isa = PBXTargetDependency;
 			target = B03000001 /* Bowzer */;
 			targetProxy = C00000030 /* PBXContainerItemProxy */;
-		};
-		C03000020 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B03000001 /* Bowzer */;
-			targetProxy = C00000040 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -729,40 +667,6 @@
 			};
 			name = Release;
 		};
-		C04000201 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Bowzer;
-			};
-			name = Debug;
-		};
-		C04000202 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Bowzer;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -793,16 +697,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C04000002 /* Build configuration list for PBXNativeTarget "BowzerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C04000201 /* Debug */,
-				C04000202 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		V00000002 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B05000001 /* Project object */;
 }

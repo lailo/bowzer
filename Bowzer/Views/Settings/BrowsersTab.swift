@@ -21,6 +21,7 @@ struct BrowsersTab: View {
                         ))
                         .toggleStyle(.checkbox)
                         .labelsHidden()
+                        .accessibilityIdentifier("browserToggle_\(item.id)")
 
                         Image(nsImage: item.browser.icon)
                             .resizable()
@@ -57,6 +58,7 @@ struct BrowsersTab: View {
                     appState.profileDetectionService.detectAllProfiles(for: appState.browsers)
                     appState.applyBrowserOrder()
                 }
+                .accessibilityIdentifier("refreshBrowsersButton")
             }
             .padding(12)
         }

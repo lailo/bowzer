@@ -9,17 +9,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem?
     private var pendingURL: URL?
 
+    // Test mode flags
+    private var isUITesting: Bool {
+        CommandLine.arguments.contains("--ui-testing")
+    }
+
+    private var shouldShowPickerForTesting: Bool {
+        CommandLine.arguments.contains("--show-picker-for-testing")
+    }
+
+    private var shouldShowSettingsForTesting: Bool {
+        CommandLine.arguments.contains("--show-settings-for-testing")
+    }
+
+    private var isRunningTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+
+    private var isRunningInPreview: Bool {
+        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PLAYGROUNDS"] == "1"
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Skip most initialization when running in Xcode previews
+        if isRunningInPreview {
+            return
+        }
+
+        // Skip most initialization when running unit tests
+        if isRunningTests && !isUITesting {
+            return
+        }
+
         // Set as accessory app (menu bar only, doesn't quit on window close)
         NSApp.setActivationPolicy(.accessory)
 
-        // Register for URL events
-        NSAppleEventManager.shared().setEventHandler(
-            self,
-            andSelector: #selector(handleURLEvent(_:replyEvent:)),
-            forEventClass: AEEventClass(kInternetEventClass),
-            andEventID: AEEventID(kAEGetURL)
-        )
+        // Skip URL event registration in UI testing mode to avoid conflicts
+        if !isUITesting {
+            // Register for URL events
+            NSAppleEventManager.shared().setEventHandler(
+                self,
+                andSelector: #selector(handleURLEvent(_:replyEvent:)),
+                forEventClass: AEEventClass(kInternetEventClass),
+                andEventID: AEEventID(kAEGetURL)
+            )
+        }
 
         // Initialize services
         appState.browserDetectionService.detectBrowsers()
@@ -29,6 +63,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Set up menu bar
         setupMenuBar()
+
+        // Show picker if launched with testing flag
+        if shouldShowPickerForTesting {
+            let testURL = URL(string: "https://example.com")!
+            showPicker(for: testURL)
+        }
+
+        // Show settings if launched with testing flag
+        if shouldShowSettingsForTesting {
+            showSettings()
+        }
     }
 
     private func setupMenuBar() {

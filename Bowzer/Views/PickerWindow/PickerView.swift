@@ -32,6 +32,7 @@ struct PickerView: View {
                             launchURL(with: item)
                         }
                     )
+                    .accessibilityIdentifier("browserItem_\(item.id)")
                     .onHover { hovering in
                         hoveredItem = hovering ? item.id : nil
                     }

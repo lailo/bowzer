@@ -13,6 +13,7 @@ struct PreferencesTab: View {
                         appState.settingsService.saveSettings()
                     }
                 ))
+                .accessibilityIdentifier("showProfileLabelsToggle")
             } header: {
                 Text("Display")
             }
@@ -24,6 +25,7 @@ struct PreferencesTab: View {
                         appState.settingsService.setLaunchAtLogin(newValue)
                     }
                 ))
+                .accessibilityIdentifier("launchAtLoginToggle")
             } header: {
                 Text("Startup")
             }
