@@ -1,5 +1,25 @@
 import SwiftUI
 
+/// Displays a usage count badge for browser items
+struct UsageCountBadge: View {
+    let count: Int
+
+    var body: some View {
+        if count > 0 {
+            Text("\(count)")
+                .font(.caption2)
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 2)
+                .background(
+                    Capsule()
+                        .fill(Color.secondary.opacity(0.15))
+                )
+                .help("Used \(count) time\(count == 1 ? "" : "s")")
+        }
+    }
+}
+
 struct BrowsersTab: View {
     @EnvironmentObject var appState: AppState
 
@@ -31,6 +51,9 @@ struct BrowsersTab: View {
 
                         Spacer()
 
+                        // Usage count badge
+                        UsageCountBadge(count: appState.getUsageCount(for: item.id))
+
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.secondary)
                             .font(.caption)
@@ -60,7 +83,7 @@ struct BrowsersTab: View {
 
 #Preview("Browsers Tab") {
     let appState = AppState()
-    
+
     // Create sample browsers
     let safari = Browser(
         id: "safari",
@@ -70,7 +93,7 @@ struct BrowsersTab: View {
         icon: NSWorkspace.shared.icon(forFile: "/Applications/Safari.app"),
         profiles: []
     )
-    
+
     let chrome = Browser(
         id: "chrome",
         name: "Chrome",
@@ -82,10 +105,17 @@ struct BrowsersTab: View {
             BrowserProfile(id: "2", name: "Work", directoryName: "Profile 2")
         ]
     )
-    
+
     appState.browsers = [safari, chrome]
     appState.applyBrowserOrder()
-    
+
+    // Add sample usage counts to demonstrate the feature
+    appState.settings.usageCount = [
+        "com.apple.Safari_default": 42,
+        "com.google.Chrome_Personal": 15,
+        "com.google.Chrome_Work": 3
+    ]
+
     return BrowsersTab()
         .environmentObject(appState)
         .frame(width: 450, height: 350)

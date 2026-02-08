@@ -23,7 +23,7 @@
 ### Missing Features
 - [ ] **Support keyboard shortcuts beyond 1-9** - users with 10+ profiles can't use keyboard
 - [ ] **Add search/filter in picker** - for users with many browsers/profiles
-- [ ] **Track recent/favorite browsers** - remember user's most-used selections
+- [x] **Track recent/favorite browsers** - remember user's most-used selections
 - [ ] **Add URL routing rules** - e.g., "send GitHub links to Arc"
 - [ ] **Support default profile per browser** - preferred profile without using picker
 - [ ] **Add profile icon/color differentiation** - visually distinguish profiles of same browser

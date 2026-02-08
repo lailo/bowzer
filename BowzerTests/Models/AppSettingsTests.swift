@@ -118,4 +118,60 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.showMenuBarIcon, true)
         XCTAssertEqual(decoded.browserOrder, ["browser1"])
     }
+
+    func testDecode_WithMissingUsageCount_UsesEmptyDictionary() throws {
+        // Simulate old settings JSON without usageCount
+        let oldSettingsJSON = """
+        {
+            "browserOrder": ["browser1"],
+            "hiddenBrowsers": [],
+            "launchAtLogin": false,
+            "showProfileLabels": true,
+            "showMenuBarIcon": true
+        }
+        """.data(using: .utf8)!
+
+        let decoded = try JSONDecoder().decode(AppSettings.self, from: oldSettingsJSON)
+
+        XCTAssertEqual(decoded.usageCount, [:])
+    }
+
+    // MARK: - Usage Count Tests
+
+    func testUsageCount_DefaultsToEmpty() {
+        let settings = AppSettings()
+        XCTAssertEqual(settings.usageCount, [:])
+    }
+
+    func testGetUsageCount_ReturnsZeroForUnknownItem() {
+        let settings = AppSettings()
+        XCTAssertEqual(settings.getUsageCount(for: "unknown_item"), 0)
+    }
+
+    func testGetUsageCount_ReturnsStoredValue() {
+        let settings = AppSettings(usageCount: ["browser1": 5, "browser2": 10])
+        XCTAssertEqual(settings.getUsageCount(for: "browser1"), 5)
+        XCTAssertEqual(settings.getUsageCount(for: "browser2"), 10)
+    }
+
+    func testIncrementUsageCount_IncrementsExistingValue() {
+        var settings = AppSettings(usageCount: ["browser1": 5])
+        settings.incrementUsageCount(for: "browser1")
+        XCTAssertEqual(settings.getUsageCount(for: "browser1"), 6)
+    }
+
+    func testIncrementUsageCount_CreatesNewEntry() {
+        var settings = AppSettings()
+        settings.incrementUsageCount(for: "new_browser")
+        XCTAssertEqual(settings.getUsageCount(for: "new_browser"), 1)
+    }
+
+    func testEncodeDecode_PreservesUsageCount() throws {
+        let settings = AppSettings(usageCount: ["browser1": 42, "browser2": 7])
+
+        let data = try JSONEncoder().encode(settings)
+        let decoded = try JSONDecoder().decode(AppSettings.self, from: data)
+
+        XCTAssertEqual(decoded.usageCount, ["browser1": 42, "browser2": 7])
+    }
 }

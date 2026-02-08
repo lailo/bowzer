@@ -130,9 +130,21 @@ class AppState: ObservableObject {
 
     // MARK: - URL Launching
 
-    /// Launches a URL with the specified browser/profile
+    /// Launches a URL with the specified browser/profile and tracks usage
     func launchURL(_ url: URL, with item: BrowserDisplayItem) {
         urlLaunchService.launch(url: url, with: item)
+        trackUsage(for: item)
+    }
+
+    /// Records a browser/profile selection for usage tracking
+    private func trackUsage(for item: BrowserDisplayItem) {
+        settings.incrementUsageCount(for: item.id)
+        saveSettings()
+    }
+
+    /// Returns the usage count for a specific browser/profile item
+    func getUsageCount(for itemId: String) -> Int {
+        settings.getUsageCount(for: itemId)
     }
 
     // MARK: - Launch at Login
