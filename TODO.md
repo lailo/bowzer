@@ -3,7 +3,7 @@
 ## High Priority
 
 ### Code Quality
-- [ ] **Eliminate duplicate code in services** - `detectBrowsers()` and `detectBrowsersResult()` are 95% identical in `BrowserDetectionService.swift`, same pattern in `ProfileDetectionService` and `URLLaunchService`
+- [x] **Eliminate duplicate code in services** - `detectBrowsers()` and `detectBrowsersResult()` are 95% identical in `BrowserDetectionService.swift`, same pattern in `ProfileDetectionService` and `URLLaunchService`
 - [ ] **Implement proper error handling** - errors are currently `print()`ed and silently swallowed, no user feedback when launches fail
 - [ ] **Replace magic numbers with constants** - hardcoded values like `keyCode == 53` for Escape, `42` for icon positioning
 
