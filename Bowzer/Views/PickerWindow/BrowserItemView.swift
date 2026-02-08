@@ -92,13 +92,13 @@ struct BrowserItemView: View {
             BrowserProfile(id: "2", name: "Work", directoryName: "Profile 2")
         ]
     )
-    
+
     let item = BrowserDisplayItem(
         browser: sampleBrowser,
         profile: sampleBrowser.profiles.first
     )
-    
-    BrowserItemView(
+
+    return BrowserItemView(
         item: item,
         index: 1,
         isHovered: false,
@@ -107,6 +107,7 @@ struct BrowserItemView: View {
         onSelect: { print("Selected") }
     )
     .padding()
+    .frame(width: 200, height: 100)
 }
 
 #Preview("Browser Item Hovered") {
@@ -118,13 +119,13 @@ struct BrowserItemView: View {
         icon: NSWorkspace.shared.icon(forFile: "/Applications/Google Chrome.app"),
         profiles: []
     )
-    
+
     let item = BrowserDisplayItem(
         browser: sampleBrowser,
         profile: nil
     )
-    
-    BrowserItemView(
+
+    return BrowserItemView(
         item: item,
         index: 2,
         isHovered: true,
@@ -133,4 +134,5 @@ struct BrowserItemView: View {
         onSelect: { print("Selected") }
     )
     .padding()
+    .frame(width: 200, height: 100)
 }

@@ -57,4 +57,5 @@ struct SettingsView: View {
     
     return SettingsView()
         .environmentObject(appState)
+        .frame(width: 450, height: 350)
 }

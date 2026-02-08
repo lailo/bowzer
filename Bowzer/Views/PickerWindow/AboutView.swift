@@ -29,4 +29,5 @@ struct AboutView: View {
 
 #Preview {
     AboutView()
+        .frame(width: 300, height: 200)
 }

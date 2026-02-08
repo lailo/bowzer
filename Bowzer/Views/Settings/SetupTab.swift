@@ -39,6 +39,6 @@ struct SetupTab: View {
 }
 
 #Preview("Setup Tab") {
-    SetupTab()
+    return SetupTab()
         .frame(width: 450, height: 350)
 }
