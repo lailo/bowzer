@@ -42,8 +42,8 @@
 ## Lower Priority
 
 ### Performance
-- [ ] **Optimize browser detection sorting** - O(n²) sorting can be improved with lookup map
-- [ ] **Improve Firefox profile parsing** - more efficient line parsing
+- [x] **Optimize browser detection sorting** - O(n²) sorting can be improved with lookup map
+- [x] **Improve Firefox profile parsing** - more efficient line parsing
 
 ### Accessibility
 - [ ] **Add accessibilityLabel to browser items** - describe browser name and action

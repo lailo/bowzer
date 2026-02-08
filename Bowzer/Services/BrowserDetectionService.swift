@@ -10,6 +10,11 @@ class BrowserDetectionService {
         .safari, .chrome, .firefox, .edge, .brave, .arc
     ]
 
+    /// Lookup map for O(1) sort order access
+    private lazy var browserSortOrder: [String: Int] = {
+        Dictionary(uniqueKeysWithValues: supportedBrowsers.enumerated().map { ($1.rawValue, $0) })
+    }()
+
     init(workspace: WorkspaceProviding = NSWorkspace.shared,
          fileManager: FileManagerProviding = FileManager.default) {
         self.workspace = workspace
@@ -52,9 +57,10 @@ class BrowserDetectionService {
             detectedBrowsers.append(browser)
         }
 
+        // Sort using O(1) lookup instead of O(n) firstIndex calls
         detectedBrowsers.sort { browser1, browser2 in
-            let index1 = supportedBrowsers.firstIndex(where: { $0.rawValue == browser1.bundleIdentifier }) ?? Int.max
-            let index2 = supportedBrowsers.firstIndex(where: { $0.rawValue == browser2.bundleIdentifier }) ?? Int.max
+            let index1 = browserSortOrder[browser1.bundleIdentifier] ?? Int.max
+            let index2 = browserSortOrder[browser2.bundleIdentifier] ?? Int.max
             return index1 < index2
         }
 

@@ -125,39 +125,55 @@ class ProfileDetectionService {
 
     func parseFirefoxProfilesIni(contents: String) -> [BrowserProfile] {
         var profiles: [BrowserProfile] = []
-        var currentProfile: (name: String?, path: String?, isRelative: Bool)?
+        var currentName: String?
+        var currentPath: String?
 
-        for line in contents.components(separatedBy: .newlines) {
+        // Use enumerateLines for memory-efficient iteration (no intermediate array)
+        contents.enumerateLines { line, _ in
             let trimmed = line.trimmingCharacters(in: .whitespaces)
+            guard !trimmed.isEmpty else { return }
 
-            if trimmed.hasPrefix("[Profile") {
-                // Save previous profile if exists
-                if let name = currentProfile?.name, let path = currentProfile?.path {
-                    let profile = BrowserProfile(
+            // Check for section header
+            if trimmed.first == "[" {
+                // Save previous profile if valid
+                if trimmed.hasPrefix("[Profile"), let name = currentName, let path = currentPath {
+                    profiles.append(BrowserProfile(
                         id: "firefox_\(path)",
                         name: name,
                         directoryName: path
-                    )
-                    profiles.append(profile)
+                    ))
                 }
-                currentProfile = (nil, nil, true)
-            } else if trimmed.hasPrefix("Name=") {
-                currentProfile?.name = String(trimmed.dropFirst(5))
-            } else if trimmed.hasPrefix("Path=") {
-                currentProfile?.path = String(trimmed.dropFirst(5))
-            } else if trimmed.hasPrefix("IsRelative=") {
-                currentProfile?.isRelative = trimmed.dropFirst(11) == "1"
+                // Reset for new section (only track Profile sections)
+                if trimmed.hasPrefix("[Profile") {
+                    currentName = nil
+                    currentPath = nil
+                } else {
+                    // Non-profile section (like [General]), clear tracking
+                    currentName = nil
+                    currentPath = nil
+                }
+                return
+            }
+
+            // Parse key=value using split (more efficient than multiple hasPrefix checks)
+            guard let equalsIndex = trimmed.firstIndex(of: "=") else { return }
+            let key = trimmed[..<equalsIndex]
+            let value = String(trimmed[trimmed.index(after: equalsIndex)...])
+
+            switch key {
+            case "Name": currentName = value
+            case "Path": currentPath = value
+            default: break
             }
         }
 
         // Don't forget the last profile
-        if let name = currentProfile?.name, let path = currentProfile?.path {
-            let profile = BrowserProfile(
+        if let name = currentName, let path = currentPath {
+            profiles.append(BrowserProfile(
                 id: "firefox_\(path)",
                 name: name,
                 directoryName: path
-            )
-            profiles.append(profile)
+            ))
         }
 
         Log.profile.info("Detected \(profiles.count) Firefox profiles")
