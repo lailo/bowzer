@@ -51,6 +51,9 @@ struct BrowserItemView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(accessibilityLabelText)
+        .accessibilityHint(accessibilityHintText)
+        .accessibilityAddTraits(.isButton)
         .onHover { hovering in
             if hovering {
                 NSCursor.pointingHand.push()
@@ -58,6 +61,22 @@ struct BrowserItemView: View {
                 NSCursor.pop()
             }
         }
+    }
+
+    // MARK: - Accessibility
+
+    private var accessibilityLabelText: String {
+        if let profile = item.profile {
+            return "\(item.browser.name), \(profile.name) profile"
+        }
+        return item.browser.name
+    }
+
+    private var accessibilityHintText: String {
+        if index <= 9 {
+            return "Press \(index) to open in this browser"
+        }
+        return "Activate to open in this browser"
     }
 }
 

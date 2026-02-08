@@ -46,7 +46,7 @@
 - [x] **Improve Firefox profile parsing** - more efficient line parsing
 
 ### Accessibility
-- [ ] **Add accessibilityLabel to browser items** - describe browser name and action
-- [ ] **Add accessibilityHint for shortcuts** - announce "Press 1 to select this browser"
-- [ ] **Declare accessibility traits** - `.isButton` for interactive items
+- [x] **Add accessibilityLabel to browser items** - describe browser name and action
+- [x] **Add accessibilityHint for shortcuts** - announce "Press 1 to select this browser"
+- [x] **Declare accessibility traits** - `.isButton` for interactive items
 - [ ] **Improve color contrast** - keyboard shortcut badges need better visibility
