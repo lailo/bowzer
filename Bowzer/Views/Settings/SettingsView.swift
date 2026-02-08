@@ -7,19 +7,19 @@ struct SettingsView: View {
         TabView {
             SetupTab()
                 .tabItem {
-                    Label("Setup", systemImage: "gear")
+                    Label("tabs.setup", systemImage: "gear")
                 }
 
             BrowsersTab()
                 .environmentObject(appState)
                 .tabItem {
-                    Label("Browsers", systemImage: "globe")
+                    Label("tabs.browsers", systemImage: "globe")
                 }
 
             PreferencesTab()
                 .environmentObject(appState)
                 .tabItem {
-                    Label("Preferences", systemImage: "slider.horizontal.3")
+                    Label("tabs.preferences", systemImage: "slider.horizontal.3")
                 }
         }
         .frame(width: 450, height: 350)

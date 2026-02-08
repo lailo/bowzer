@@ -72,10 +72,10 @@ struct PickerView: View {
             Image(systemName: "globe")
                 .font(.system(size: 32))
                 .foregroundColor(.secondary)
-            Text("No browsers visible")
+            Text("picker.noBrowsersVisible")
                 .font(.headline)
                 .foregroundColor(.primary)
-            Text("Press , to open settings")
+            Text("picker.openSettings")
                 .font(.caption)
                 .foregroundColor(.secondary)
         }

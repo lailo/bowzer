@@ -6,7 +6,7 @@ struct PreferencesTab: View {
     var body: some View {
         Form {
             Section {
-                Toggle("Show profile labels", isOn: Binding(
+                Toggle(String(localized: "preferences.showProfileLabels"), isOn: Binding(
                     get: { appState.settings.showProfileLabels },
                     set: { newValue in
                         appState.settings.showProfileLabels = newValue
@@ -16,7 +16,7 @@ struct PreferencesTab: View {
                 .accessibilityIdentifier("showProfileLabelsToggle")
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Toggle("Show menu bar icon", isOn: Binding(
+                    Toggle(String(localized: "preferences.showMenuBarIcon"), isOn: Binding(
                         get: { appState.settings.showMenuBarIcon },
                         set: { newValue in
                             appState.settings.showMenuBarIcon = newValue
@@ -25,16 +25,16 @@ struct PreferencesTab: View {
                     ))
                     .accessibilityIdentifier("showMenuBarIconToggle")
 
-                    Text("Press , in the picker or reopen the app to access Settings")
+                    Text("preferences.menuBarHint")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
             } header: {
-                Text("Display")
+                Text("preferences.display")
             }
 
             Section {
-                Toggle("Launch at login", isOn: Binding(
+                Toggle(String(localized: "preferences.launchAtLogin"), isOn: Binding(
                     get: { appState.isLaunchAtLoginEnabled() },
                     set: { newValue in
                         appState.setLaunchAtLogin(newValue)
@@ -42,7 +42,7 @@ struct PreferencesTab: View {
                 ))
                 .accessibilityIdentifier("launchAtLoginToggle")
             } header: {
-                Text("Startup")
+                Text("preferences.startup")
             }
         }
         .formStyle(.grouped)

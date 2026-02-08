@@ -22,42 +22,46 @@ enum BowzerError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .noBrowsersFound:
-            return "No supported browsers found on this system"
+            return String(localized: "error.noBrowsersFound")
         case .browserNotInstalled(let browser):
-            return "\(browser) is not installed"
+            return String(localized: "error.browserNotInstalled \(browser)")
         case .profileConfigNotFound(let browser):
-            return "Profile configuration not found for \(browser)"
+            return String(localized: "error.profileConfigNotFound \(browser)")
         case .profileParsingFailed(let browser, let reason):
-            return "Failed to parse \(browser) profiles: \(reason)"
+            return String(localized: "error.profileParsingFailed \(browser) \(reason)")
         case .launchFailed(let browser, let reason):
-            return "Failed to launch \(browser): \(reason)"
+            return String(localized: "error.launchFailed \(browser) \(reason)")
         case .executableNotFound(let path):
-            return "Browser executable not found at \(path)"
+            return String(localized: "error.executableNotFound \(path)")
         case .settingsEncodingFailed:
-            return "Failed to save settings"
+            return String(localized: "error.settingsEncodingFailed")
         case .settingsDecodingFailed:
-            return "Failed to load settings"
+            return String(localized: "error.settingsDecodingFailed")
         case .launchAtLoginFailed(let enabled, let reason):
-            return "Failed to \(enabled ? "enable" : "disable") launch at login: \(reason)"
+            if enabled {
+                return String(localized: "error.launchAtLoginEnableFailed \(reason)")
+            } else {
+                return String(localized: "error.launchAtLoginDisableFailed \(reason)")
+            }
         }
     }
 
     var recoverySuggestion: String? {
         switch self {
         case .noBrowsersFound:
-            return "Install a supported browser (Safari, Chrome, Firefox, Edge, Brave, or Arc)"
+            return String(localized: "recovery.installSupportedBrowser")
         case .browserNotInstalled:
-            return "Install the browser or refresh the browser list"
+            return String(localized: "recovery.installBrowser")
         case .profileConfigNotFound:
-            return "The browser may need to be launched at least once to create its profile"
+            return String(localized: "recovery.launchBrowserFirst")
         case .profileParsingFailed:
-            return "Try refreshing the browser list"
+            return String(localized: "recovery.refreshBrowserList")
         case .launchFailed, .executableNotFound:
-            return "Try refreshing the browser list or reinstalling the browser"
+            return String(localized: "recovery.refreshOrReinstall")
         case .settingsEncodingFailed, .settingsDecodingFailed:
-            return "Settings will be reset to defaults"
+            return String(localized: "recovery.settingsReset")
         case .launchAtLoginFailed:
-            return "Check System Preferences > Login Items"
+            return String(localized: "recovery.checkLoginItems")
         }
     }
 }

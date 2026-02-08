@@ -11,11 +11,11 @@ struct AboutView: View {
                 .font(.title)
                 .fontWeight(.bold)
 
-            Text("Browser Picker for macOS")
+            Text("about.subtitle")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            Text("Version \(AppInfo.version)")
+            Text("about.version \(AppInfo.version)")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.top, 8)

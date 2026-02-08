@@ -5,26 +5,26 @@ struct SetupTab: View {
         Form {
             Section {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Set Bowzer as your default browser to intercept links from other applications.")
+                    Text("setup.defaultBrowserDescription", tableName: "Localizable")
                         .foregroundColor(.secondary)
 
-                    Button("Open System Settings") {
+                    Button(String(localized: "setup.openSystemSettings", table: "Localizable")) {
                         openDefaultBrowserSettings()
                     }
                 }
             } header: {
-                Text("Default Browser")
+                Text("setup.defaultBrowser", tableName: "Localizable")
             }
 
             Section {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("When you click a link, Bowzer shows a picker at your cursor.")
+                    Text("setup.howItWorksDescription1", tableName: "Localizable")
                         .foregroundColor(.secondary)
-                    Text("Press 1-9 to quickly select a browser, or Escape to cancel.")
+                    Text("setup.howItWorksDescription2", tableName: "Localizable")
                         .foregroundColor(.secondary)
                 }
             } header: {
-                Text("How it works")
+                Text("setup.howItWorks", tableName: "Localizable")
             }
         }
         .formStyle(.grouped)

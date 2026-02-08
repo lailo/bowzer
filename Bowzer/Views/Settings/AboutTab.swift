@@ -14,11 +14,11 @@ struct AboutTab: View {
                 .font(.title)
                 .fontWeight(.bold)
 
-            Text("Version \(version) (\(build))")
+            Text("about.version \(version) (\(build))")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            Text("A simple browser picker for macOS")
+            Text("about.appDescription")
                 .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

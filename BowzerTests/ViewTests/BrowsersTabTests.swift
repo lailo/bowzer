@@ -83,8 +83,8 @@ final class BrowsersTabTests: XCTestCase {
         let sut = BrowsersTab()
             .environmentObject(appState)
 
-        // Find the Refresh button
-        let refreshButton = try sut.inspect().find(button: "Refresh")
+        // Find the Refresh button (localized)
+        let refreshButton = try sut.inspect().find(button: String(localized: "browsers.refresh"))
         XCTAssertNotNil(refreshButton)
     }
 
@@ -150,8 +150,8 @@ final class BrowsersTabTests: XCTestCase {
         let sut = BrowsersTab()
             .environmentObject(appState)
 
-        // Should display the help text
-        let helpText = try sut.inspect().find(text: "Drag to reorder, toggle to show/hide")
+        // Should display the help text (localized)
+        let helpText = try sut.inspect().find(text: String(localized: "browsers.dragToReorder"))
         XCTAssertNotNil(helpText)
     }
 

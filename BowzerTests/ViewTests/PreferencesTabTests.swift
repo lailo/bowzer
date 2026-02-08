@@ -13,8 +13,8 @@ final class PreferencesTabTests: XCTestCase {
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // Find the "Show profile labels" toggle
-        let toggle = try sut.inspect().find(text: "Show profile labels")
+        // Find the "Show profile labels" toggle (localized)
+        let toggle = try sut.inspect().find(text: String(localized: "preferences.showProfileLabels"))
         XCTAssertNotNil(toggle)
     }
 
@@ -24,8 +24,8 @@ final class PreferencesTabTests: XCTestCase {
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // Find the "Launch at login" toggle
-        let toggle = try sut.inspect().find(text: "Launch at login")
+        // Find the "Launch at login" toggle (localized)
+        let toggle = try sut.inspect().find(text: String(localized: "preferences.launchAtLogin"))
         XCTAssertNotNil(toggle)
     }
 
@@ -35,8 +35,8 @@ final class PreferencesTabTests: XCTestCase {
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // Find the "Show menu bar icon" toggle
-        let toggle = try sut.inspect().find(text: "Show menu bar icon")
+        // Find the "Show menu bar icon" toggle (localized)
+        let toggle = try sut.inspect().find(text: String(localized: "preferences.showMenuBarIcon"))
         XCTAssertNotNil(toggle)
     }
 
@@ -59,8 +59,8 @@ final class PreferencesTabTests: XCTestCase {
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // The "Display" section header should exist
-        let header = try sut.inspect().find(text: "Display")
+        // The "Display" section header should exist (localized)
+        let header = try sut.inspect().find(text: String(localized: "preferences.display"))
         XCTAssertNotNil(header)
     }
 
@@ -70,8 +70,8 @@ final class PreferencesTabTests: XCTestCase {
         let sut = PreferencesTab()
             .environmentObject(appState)
 
-        // The "Startup" section header should exist
-        let header = try sut.inspect().find(text: "Startup")
+        // The "Startup" section header should exist (localized)
+        let header = try sut.inspect().find(text: String(localized: "preferences.startup"))
         XCTAssertNotNil(header)
     }
 

@@ -67,16 +67,16 @@ struct BrowserItemView: View {
 
     private var accessibilityLabelText: String {
         if let profile = item.profile {
-            return "\(item.browser.name), \(profile.name) profile"
+            return String(localized: "accessibility.browserLabel \(item.browser.name) \(profile.name)")
         }
         return item.browser.name
     }
 
     private var accessibilityHintText: String {
         if index <= 9 {
-            return "Press \(index) to open in this browser"
+            return String(localized: "accessibility.browserHint.numbered \(index)")
         }
-        return "Activate to open in this browser"
+        return String(localized: "accessibility.browserHint.activate")
     }
 }
 

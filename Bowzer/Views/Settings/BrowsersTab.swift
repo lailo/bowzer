@@ -4,6 +4,10 @@ import SwiftUI
 struct UsageCountBadge: View {
     let count: Int
 
+    private var usageCountText: String {
+        String(localized: "browsers.usageCount", defaultValue: "Used \(count) times")
+    }
+
     var body: some View {
         if count > 0 {
             Text("\(count)")
@@ -15,7 +19,7 @@ struct UsageCountBadge: View {
                     Capsule()
                         .fill(Color.secondary.opacity(0.15))
                 )
-                .help("Used \(count) time\(count == 1 ? "" : "s")")
+                .help(usageCountText)
         }
     }
 }
@@ -67,11 +71,11 @@ struct BrowsersTab: View {
             Divider()
 
             HStack {
-                Text("Drag to reorder, toggle to show/hide")
+                Text("browsers.dragToReorder", tableName: "Localizable")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
-                Button("Refresh") {
+                Button(String(localized: "browsers.refresh", table: "Localizable")) {
                     appState.refreshBrowsers()
                 }
                 .accessibilityIdentifier("refreshBrowsersButton")
