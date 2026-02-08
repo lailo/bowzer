@@ -46,10 +46,8 @@ class PickerWindowController: NSObject, NSWindowDelegate {
         panel.delegate = self
 
         // Position so first browser icon is under cursor
-        // Layout: 12px horizontal padding + 6px item padding + 24px (half of 48px icon) = 42px to icon center
         let panelSize = hostingView.fittingSize
-        let firstIconCenterX: CGFloat = 42
-        let originX = location.x - firstIconCenterX
+        let originX = location.x - PickerLayout.firstIconCenterOffset
         let originY = location.y - panelSize.height / 2
 
         // Ensure panel stays on screen
@@ -80,8 +78,7 @@ class PickerWindowController: NSObject, NSWindowDelegate {
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             guard let self = self else { return event }
 
-            // Escape key
-            if event.keyCode == 53 {
+            if event.keyCode == KeyCode.escape {
                 self.close()
                 return nil
             }

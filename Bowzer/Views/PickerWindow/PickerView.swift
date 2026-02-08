@@ -20,7 +20,7 @@ struct PickerView: View {
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            HStack(spacing: 8) {
+            HStack(spacing: PickerLayout.itemSpacing) {
                 ForEach(Array(displayItems.enumerated()), id: \.element.id) { index, item in
                     BrowserItemView(
                         item: item,
@@ -38,10 +38,10 @@ struct PickerView: View {
                     }
                 }
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
+            .padding(.horizontal, PickerLayout.horizontalPadding)
+            .padding(.vertical, PickerLayout.verticalPadding)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: PickerLayout.cornerRadius)
                     .fill(Color(white: 0.2))
                     .shadow(color: .black.opacity(0.5), radius: 12, x: 0, y: 4)
             )
@@ -93,7 +93,7 @@ class KeyboardHandlingView: NSView {
     }
 
     override func keyDown(with event: NSEvent) {
-        if event.keyCode == 53 { // Escape
+        if event.keyCode == KeyCode.escape {
             onEscape?()
             return
         }
