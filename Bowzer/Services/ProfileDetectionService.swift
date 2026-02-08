@@ -16,24 +16,12 @@ class ProfileDetectionService {
 
         for (index, browser) in updatedBrowsers.enumerated() {
             guard let browserType = BrowserType(rawValue: browser.bundleIdentifier) else { continue }
-
-            let profiles: [BrowserProfile]
-            switch browserType.profileType {
-            case .chromium:
-                profiles = detectChromiumProfiles(for: browserType)
-            case .firefox:
-                profiles = detectFirefoxProfiles()
-            case .none:
-                profiles = []
-            }
-
-            updatedBrowsers[index].profiles = profiles
+            updatedBrowsers[index].profiles = detectProfiles(for: browserType)
         }
 
         appState.browsers = updatedBrowsers
     }
 
-    // Testable version that returns profiles for a specific browser type
     func detectProfiles(for browserType: BrowserType) -> [BrowserProfile] {
         switch browserType.profileType {
         case .chromium:
