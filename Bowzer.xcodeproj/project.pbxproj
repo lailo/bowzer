@@ -50,6 +50,9 @@
 		V00000006 /* PickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000013 /* PickerViewTests.swift */; };
 		V00000007 /* BrowsersTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000014 /* BrowsersTabTests.swift */; };
 		V00000008 /* PreferencesTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000015 /* PreferencesTabTests.swift */; };
+		T00000001 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000011 /* AppStateTests.swift */; };
+		T00000002 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000012 /* IntegrationTests.swift */; };
+		T00000003 /* ErrorScenarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000013 /* ErrorScenarioTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,9 @@
 		V00000013 /* PickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTests.swift; sourceTree = "<group>"; };
 		V00000014 /* BrowsersTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTabTests.swift; sourceTree = "<group>"; };
 		V00000015 /* PreferencesTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabTests.swift; sourceTree = "<group>"; };
+		T00000011 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		T00000012 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		T00000013 /* ErrorScenarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScenarioTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +257,8 @@
 		C02000001 /* BowzerTests */ = {
 			isa = PBXGroup;
 			children = (
+				T02000001 /* App */,
+				T02000002 /* Integration */,
 				E02000001 /* Mocks */,
 				E02000002 /* Services */,
 				E02000003 /* Models */,
@@ -258,6 +266,23 @@
 				C00000011 /* BowzerTests.swift */,
 			);
 			path = BowzerTests;
+			sourceTree = "<group>";
+		};
+		T02000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				T00000011 /* AppStateTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		T02000002 /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				T00000012 /* IntegrationTests.swift */,
+				T00000013 /* ErrorScenarioTests.swift */,
+			);
+			path = Integration;
 			sourceTree = "<group>";
 		};
 		V02000001 /* ViewTests */ = {
@@ -457,6 +482,9 @@
 				V00000006 /* PickerViewTests.swift in Sources */,
 				V00000007 /* BrowsersTabTests.swift in Sources */,
 				V00000008 /* PreferencesTabTests.swift in Sources */,
+				T00000001 /* AppStateTests.swift in Sources */,
+				T00000002 /* IntegrationTests.swift in Sources */,
+				T00000003 /* ErrorScenarioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

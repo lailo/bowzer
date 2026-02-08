@@ -1,7 +1,7 @@
 import Foundation
 
 /// Errors that can occur in Bowzer
-enum BowzerError: LocalizedError {
+enum BowzerError: LocalizedError, Equatable {
     // Browser detection errors
     case noBrowsersFound
     case browserNotInstalled(String)
