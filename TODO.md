@@ -14,9 +14,9 @@
 
 ### Test Coverage
 - [ ] **Add AppDelegate tests** - 193 lines of critical lifecycle code with no tests
-- [ ] **Add AppState tests** - `applyBrowserOrder()`, `saveDisplayItemOrder()`, `moveDisplayItems()` untested
-- [ ] **Add integration tests** - full browser detection → profile detection → settings flow
-- [ ] **Add error scenario tests** - browser not found, corrupted profiles, JSON failures, launch failures
+- [x] **Add AppState tests** - `applyBrowserOrder()`, `saveDisplayItemOrder()`, `moveDisplayItems()` untested
+- [x] **Add integration tests** - full browser detection → profile detection → settings flow
+- [x] **Add error scenario tests** - browser not found, corrupted profiles, JSON failures, launch failures
 
 ## Medium Priority
 
