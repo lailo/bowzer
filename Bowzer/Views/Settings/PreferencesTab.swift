@@ -10,7 +10,7 @@ struct PreferencesTab: View {
                     get: { appState.settings.showProfileLabels },
                     set: { newValue in
                         appState.settings.showProfileLabels = newValue
-                        appState.settingsService.saveSettings()
+                        appState.saveSettings()
                     }
                 ))
                 .accessibilityIdentifier("showProfileLabelsToggle")
@@ -20,7 +20,7 @@ struct PreferencesTab: View {
                         get: { appState.settings.showMenuBarIcon },
                         set: { newValue in
                             appState.settings.showMenuBarIcon = newValue
-                            appState.settingsService.saveSettings()
+                            appState.saveSettings()
                         }
                     ))
                     .accessibilityIdentifier("showMenuBarIconToggle")
@@ -35,9 +35,9 @@ struct PreferencesTab: View {
 
             Section {
                 Toggle("Launch at login", isOn: Binding(
-                    get: { appState.settingsService.isLaunchAtLoginEnabled() },
+                    get: { appState.isLaunchAtLoginEnabled() },
                     set: { newValue in
-                        appState.settingsService.setLaunchAtLogin(newValue)
+                        appState.setLaunchAtLogin(newValue)
                     }
                 ))
                 .accessibilityIdentifier("launchAtLoginToggle")
@@ -54,7 +54,7 @@ struct PreferencesTab: View {
     let appState = AppState()
     appState.settings.showProfileLabels = true
     appState.settings.launchAtLogin = false
-    
+
     return PreferencesTab()
         .environmentObject(appState)
         .frame(width: 450, height: 350)

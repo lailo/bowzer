@@ -50,4 +50,48 @@ class AppState: ObservableObject {
         orderedDisplayItems.move(fromOffsets: source, toOffset: destination)
         saveDisplayItemOrder()
     }
+
+    // MARK: - Convenience Methods
+
+    /// Refreshes the browser list by re-detecting installed browsers and their profiles
+    func refreshBrowsers() {
+        browserDetectionService.detectBrowsers()
+        profileDetectionService.detectAllProfiles(for: browsers)
+        applyBrowserOrder()
+    }
+
+    /// Saves current settings to persistent storage
+    func saveSettings() {
+        settingsService.saveSettings()
+    }
+
+    /// Sets the visibility of a browser/profile item
+    func setItemVisible(_ itemId: String, visible: Bool) {
+        if visible {
+            settings.hiddenBrowsers.removeAll { $0 == itemId }
+        } else {
+            settings.hiddenBrowsers.append(itemId)
+        }
+        saveSettings()
+    }
+
+    /// Checks if a browser/profile item is visible
+    func isItemVisible(_ itemId: String) -> Bool {
+        !settings.hiddenBrowsers.contains(itemId)
+    }
+
+    /// Launches a URL with the specified browser/profile
+    func launchURL(_ url: URL, with item: BrowserDisplayItem) {
+        urlLaunchService.launch(url: url, with: item)
+    }
+
+    /// Sets whether the app should launch at login
+    func setLaunchAtLogin(_ enabled: Bool) {
+        settingsService.setLaunchAtLogin(enabled)
+    }
+
+    /// Returns whether the app is set to launch at login
+    func isLaunchAtLoginEnabled() -> Bool {
+        settingsService.isLaunchAtLoginEnabled()
+    }
 }

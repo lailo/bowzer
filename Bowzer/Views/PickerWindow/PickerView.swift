@@ -58,7 +58,7 @@ struct PickerView: View {
     }
 
     private func launchURL(with item: BrowserDisplayItem) {
-        appState.urlLaunchService.launch(url: url, with: item)
+        appState.launchURL(url, with: item)
         onDismiss()
     }
 }

@@ -115,7 +115,7 @@ class PickerWindowController: NSObject, NSWindowDelegate {
         guard index < displayItems.count else { return }
 
         let item = displayItems[index]
-        appState.urlLaunchService.launch(url: url, with: item)
+        appState.launchURL(url, with: item)
         close()
     }
 

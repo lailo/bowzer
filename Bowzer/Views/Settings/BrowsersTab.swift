@@ -9,14 +9,9 @@ struct BrowsersTab: View {
                 ForEach(appState.orderedDisplayItems) { item in
                     HStack {
                         Toggle("", isOn: Binding(
-                            get: { !appState.settings.hiddenBrowsers.contains(item.id) },
+                            get: { appState.isItemVisible(item.id) },
                             set: { isVisible in
-                                if isVisible {
-                                    appState.settings.hiddenBrowsers.removeAll { $0 == item.id }
-                                } else {
-                                    appState.settings.hiddenBrowsers.append(item.id)
-                                }
-                                appState.settingsService.saveSettings()
+                                appState.setItemVisible(item.id, visible: isVisible)
                             }
                         ))
                         .toggleStyle(.checkbox)
@@ -54,9 +49,7 @@ struct BrowsersTab: View {
                     .foregroundColor(.secondary)
                 Spacer()
                 Button("Refresh") {
-                    appState.browserDetectionService.detectBrowsers()
-                    appState.profileDetectionService.detectAllProfiles(for: appState.browsers)
-                    appState.applyBrowserOrder()
+                    appState.refreshBrowsers()
                 }
                 .accessibilityIdentifier("refreshBrowsersButton")
             }
