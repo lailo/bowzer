@@ -1,8 +1,6 @@
 import AppKit
 
 class BrowserDetectionService {
-    weak var appState: AppState?
-
     private let workspace: WorkspaceProviding
     private let fileManager: FileManagerProviding
 
@@ -21,11 +19,8 @@ class BrowserDetectionService {
         self.fileManager = fileManager
     }
 
-    func detectBrowsers() {
-        appState?.browsers = detectBrowsersResult()
-    }
-
-    func detectBrowsersResult() -> [Browser] {
+    /// Detects all installed supported browsers
+    func detectBrowsers() -> [Browser] {
         var detectedBrowsers: [Browser] = []
 
         guard let httpURL = URL(string: "https://example.com") else { return [] }

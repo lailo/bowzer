@@ -8,16 +8,7 @@ class MockAppState: ObservableObject {
     @Published var settings: AppSettings = AppSettings()
     @Published var orderedDisplayItems: [BrowserDisplayItem] = []
 
-    // Mock services - we don't need real implementations for view tests
-    let browserDetectionService = BrowserDetectionService()
-    let profileDetectionService = ProfileDetectionService()
-    let urlLaunchService = URLLaunchService()
-    let settingsService: SettingsService
-
-    init(userDefaults: MockUserDefaults = MockUserDefaults()) {
-        self.settingsService = SettingsService(userDefaults: userDefaults)
-        self.settingsService.appState = self as? AppState
-    }
+    init() {}
 
     func applyBrowserOrder() {
         let allItems = browsers.flatMap { $0.displayItems }

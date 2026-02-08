@@ -8,10 +8,9 @@ final class AppStateTests: XCTestCase {
 
     override func setUpWithError() throws {
         mockUserDefaults = MockUserDefaults()
-        appState = AppState()
-        // Replace settings service with one using mock user defaults
+        // Create AppState with injected mock settings service
         let mockSettingsService = SettingsService(userDefaults: mockUserDefaults)
-        mockSettingsService.appState = appState
+        appState = AppState(settingsService: mockSettingsService)
     }
 
     override func tearDownWithError() throws {
@@ -222,15 +221,14 @@ final class AppStateTests: XCTestCase {
         ])
     }
 
-    // MARK: - Service Initialization Tests
+    // MARK: - Dependency Injection Tests
 
-    func testInit_SetsUpServiceBindings() {
-        // Given - new AppState
-        let newAppState = AppState()
+    func testInit_AcceptsDependencyInjection() {
+        // Given - create AppState with injected services
+        let mockSettings = SettingsService(userDefaults: MockUserDefaults())
+        let newAppState = AppState(settingsService: mockSettings)
 
-        // Then - services should have appState references
-        XCTAssertNotNil(newAppState.browserDetectionService.appState)
-        XCTAssertNotNil(newAppState.profileDetectionService.appState)
-        XCTAssertNotNil(newAppState.settingsService.appState)
+        // Then - AppState should be created successfully
+        XCTAssertNotNil(newAppState)
     }
 }

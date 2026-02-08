@@ -8,7 +8,7 @@
 - [x] **Replace magic numbers with constants** - hardcoded values like `keyCode == 53` for Escape, `42` for icon positioning
 
 ### Architecture
-- [ ] **Refactor AppState** - currently a god object managing browsers, settings, 4 services, and display items
+- [x] **Refactor AppState** - currently a god object managing browsers, settings, 4 services, and display items
 - [x] **Add logging framework** - replace 17+ bare `print()` statements with os.log
 - [x] **Decouple views from services** - views directly call multiple services in sequence (e.g., `BrowsersTab.swift:56-59`)
 

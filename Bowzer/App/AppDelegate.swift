@@ -45,11 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Set as accessory app (menu bar only, doesn't quit on window close)
         NSApp.setActivationPolicy(.accessory)
 
-        // Initialize services
-        appState.browserDetectionService.detectBrowsers()
-        appState.profileDetectionService.detectAllProfiles(for: appState.browsers)
-        appState.settingsService.loadSettings()
-        appState.applyBrowserOrder()
+        // Initialize app state
+        appState.loadSettings()
+        appState.refreshBrowsers()
 
         // Set up menu bar
         updateMenuBarVisibility()

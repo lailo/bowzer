@@ -32,7 +32,7 @@ final class ErrorScenarioTests: XCTestCase {
         )
 
         // When
-        let browsers = service.detectBrowsersResult()
+        let browsers = service.detectBrowsers()
 
         // Then
         XCTAssertTrue(browsers.isEmpty)
@@ -49,7 +49,7 @@ final class ErrorScenarioTests: XCTestCase {
         )
 
         // When
-        let browsers = service.detectBrowsersResult()
+        let browsers = service.detectBrowsers()
 
         // Then - Custom browser should be filtered out
         XCTAssertTrue(browsers.isEmpty)

@@ -1,17 +1,14 @@
 import Foundation
 
 class ProfileDetectionService {
-    weak var appState: AppState?
-
     private let fileManager: FileManagerProviding
 
     init(fileManager: FileManagerProviding = FileManager.default) {
         self.fileManager = fileManager
     }
 
-    func detectAllProfiles(for browsers: [Browser]) {
-        guard let appState = appState else { return }
-
+    /// Detects profiles for all browsers and returns updated browser list
+    func detectAllProfiles(for browsers: [Browser]) -> [Browser] {
         var updatedBrowsers = browsers
 
         for (index, browser) in updatedBrowsers.enumerated() {
@@ -19,7 +16,7 @@ class ProfileDetectionService {
             updatedBrowsers[index].profiles = detectProfiles(for: browserType)
         }
 
-        appState.browsers = updatedBrowsers
+        return updatedBrowsers
     }
 
     func detectProfiles(for browserType: BrowserType) -> [BrowserProfile] {
