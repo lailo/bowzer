@@ -31,6 +31,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PLAYGROUNDS"] == "1"
     }
 
+    // MARK: - Single Instance
+
+    /// Ensures only one instance of the app is running.
+    /// Returns true if this is the only instance, false if another instance exists.
+    private func ensureSingleInstance() -> Bool {
+        guard let bundleId = Bundle.main.bundleIdentifier else { return true }
+
+        let runningApps = NSRunningApplication.runningApplications(
+            withBundleIdentifier: bundleId
+        )
+
+        // Filter out this instance
+        let otherInstances = runningApps.filter { $0 != NSRunningApplication.current }
+
+        if let existingInstance = otherInstances.first {
+            Log.settings.info("Another instance is already running, activating it")
+            existingInstance.activate(options: [.activateIgnoringOtherApps])
+
+            // Terminate this instance
+            DispatchQueue.main.async {
+                NSApp.terminate(nil)
+            }
+            return false
+        }
+
+        return true
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Skip most initialization when running in Xcode previews
         if isRunningInPreview {
@@ -39,6 +67,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Skip most initialization when running unit tests
         if isRunningTests && !isUITesting {
+            return
+        }
+
+        // Ensure only one instance is running
+        if !ensureSingleInstance() {
             return
         }
 
