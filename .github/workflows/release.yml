@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Resolve Package Dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project Bowzer.xcodeproj
+
+      - name: Build Release
+        run: |
+          xcodebuild build \
+            -project Bowzer.xcodeproj \
+            -scheme Bowzer \
+            -destination 'platform=macOS' \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            MARKETING_VERSION=${{ steps.version.outputs.VERSION }}
+
+      - name: Create zip archive
+        run: |
+          cd build/Build/Products/Release
+          zip -r Bowzer-${{ steps.version.outputs.VERSION }}.zip Bowzer.app
+          mv Bowzer-${{ steps.version.outputs.VERSION }}.zip $GITHUB_WORKSPACE/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bowzer-${{ steps.version.outputs.VERSION }}
+          path: Bowzer-${{ steps.version.outputs.VERSION }}.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Bowzer v${{ steps.version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: Bowzer-${{ steps.version.outputs.VERSION }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
