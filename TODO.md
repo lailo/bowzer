@@ -30,9 +30,9 @@
 
 ### UX Improvements
 - [ ] **Add visual feedback on selection** - brief highlight when pressing number keys
-- [ ] **Add empty state message** - helpful message when all browsers are hidden
-- [ ] **Fix fragile positioning logic** - replace hardcoded pixel values with dynamic calculation
-- [ ] **Read version from bundle** - currently hardcoded as "1.0" in AboutView
+- [x] **Add empty state message** - helpful message when all browsers are hidden
+- [x] **Fix fragile positioning logic** - replace hardcoded pixel values with dynamic calculation
+- [x] **Read version from bundle** - currently hardcoded as "1.0" in AboutView
 
 ### Settings & Persistence
 - [x] **Add settings save debouncing** - prevent multiple writes when rapidly toggling browsers

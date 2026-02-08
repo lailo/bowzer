@@ -20,22 +20,11 @@ struct PickerView: View {
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            HStack(spacing: PickerLayout.itemSpacing) {
-                ForEach(Array(displayItems.enumerated()), id: \.element.id) { index, item in
-                    BrowserItemView(
-                        item: item,
-                        index: index + 1,
-                        isHovered: hoveredItem == item.id,
-                        showLabel: appState.settings.showProfileLabels && item.showProfileLabel,
-                        hasAnyLabels: hasAnyLabels,
-                        onSelect: {
-                            launchURL(with: item)
-                        }
-                    )
-                    .accessibilityIdentifier("browserItem_\(item.id)")
-                    .onHover { hovering in
-                        hoveredItem = hovering ? item.id : nil
-                    }
+            Group {
+                if displayItems.isEmpty {
+                    emptyStateView
+                } else {
+                    browserListView
                 }
             }
             .padding(.horizontal, PickerLayout.horizontalPadding)
@@ -45,7 +34,7 @@ struct PickerView: View {
                     .fill(Color(white: 0.2))
                     .shadow(color: .black.opacity(0.5), radius: 12, x: 0, y: 4)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: PickerLayout.cornerRadius))
         }
         .background(KeyboardEventHandler(
             onEscape: onDismiss,
@@ -55,6 +44,43 @@ struct PickerView: View {
                 }
             }
         ))
+    }
+
+    private var browserListView: some View {
+        HStack(spacing: PickerLayout.itemSpacing) {
+            ForEach(Array(displayItems.enumerated()), id: \.element.id) { index, item in
+                BrowserItemView(
+                    item: item,
+                    index: index + 1,
+                    isHovered: hoveredItem == item.id,
+                    showLabel: appState.settings.showProfileLabels && item.showProfileLabel,
+                    hasAnyLabels: hasAnyLabels,
+                    onSelect: {
+                        launchURL(with: item)
+                    }
+                )
+                .accessibilityIdentifier("browserItem_\(item.id)")
+                .onHover { hovering in
+                    hoveredItem = hovering ? item.id : nil
+                }
+            }
+        }
+    }
+
+    private var emptyStateView: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "globe")
+                .font(.system(size: 32))
+                .foregroundColor(.secondary)
+            Text("No browsers visible")
+                .font(.headline)
+                .foregroundColor(.primary)
+            Text("Press , to open settings")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
     }
 
     private func launchURL(with item: BrowserDisplayItem) {

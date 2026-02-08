@@ -15,37 +15,37 @@ struct BrowserItemView: View {
                     Image(nsImage: item.browser.icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 48, height: 48)
+                        .frame(width: PickerLayout.iconSize, height: PickerLayout.iconSize)
                         .scaleEffect(isHovered ? 1.1 : 1.0)
                         .animation(.easeInOut(duration: 0.15), value: isHovered)
 
                     // Keyboard shortcut badge
                     if index <= 9 {
                         Text("\(index)")
-                            .font(.system(size: 10, weight: .medium))
+                            .font(.system(size: PickerLayout.badgeFontSize, weight: .medium))
                             .foregroundColor(.white)
-                            .frame(width: 16, height: 16)
+                            .frame(width: PickerLayout.badgeSize, height: PickerLayout.badgeSize)
                             .background(
                                 Circle()
                                     .fill(Color.gray.opacity(0.7))
                             )
-                            .offset(x: 4, y: -4)
+                            .offset(x: PickerLayout.badgeOffset, y: -PickerLayout.badgeOffset)
                     }
                 }
 
                 // Label or spacer for alignment
                 if hasAnyLabels {
                     Text(showLabel ? (item.profile?.truncatedName ?? "") : " ")
-                        .font(.system(size: 10))
+                        .font(.system(size: PickerLayout.labelFontSize))
                         .foregroundColor(.secondary)
                         .lineLimit(1)
-                        .frame(maxWidth: 60)
+                        .frame(maxWidth: PickerLayout.labelMaxWidth)
                         .opacity(showLabel ? 1 : 0)
                 }
             }
-            .padding(6)
+            .padding(PickerLayout.itemPadding)
             .background(
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: PickerLayout.itemCornerRadius)
                     .fill(isHovered ? Color.gray.opacity(0.2) : Color.clear)
             )
             .contentShape(Rectangle())

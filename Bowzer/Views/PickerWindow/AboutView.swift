@@ -6,20 +6,20 @@ struct AboutView: View {
             Image(systemName: "safari")
                 .font(.system(size: 64))
                 .foregroundColor(.blue)
-            
+
             Text("Bowzer")
                 .font(.title)
                 .fontWeight(.bold)
-            
+
             Text("Browser Picker for macOS")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
-            Text("Version 1.0")
+
+            Text("Version \(AppInfo.version)")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.top, 8)
-            
+
             Spacer()
         }
         .padding()
