@@ -9,7 +9,7 @@
 
 ### Architecture
 - [ ] **Refactor AppState** - currently a god object managing browsers, settings, 4 services, and display items
-- [ ] **Add logging framework** - replace 17+ bare `print()` statements with os.log
+- [x] **Add logging framework** - replace 17+ bare `print()` statements with os.log
 - [ ] **Decouple views from services** - views directly call multiple services in sequence (e.g., `BrowsersTab.swift:56-59`)
 
 ### Test Coverage
