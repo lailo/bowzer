@@ -58,7 +58,7 @@ class SettingsService {
                     try SMAppService.mainApp.unregister()
                 }
             } catch {
-                print("Failed to \(enabled ? "enable" : "disable") launch at login: \(error)")
+                Log.settings.error("Failed to \(enabled ? "enable" : "disable") launch at login: \(error.localizedDescription)")
             }
         }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F00000001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000011 /* Constants.swift */; };
+		F00000002 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000012 /* Logger.swift */; };
 		4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B402F367AF000FD1533 /* AboutView.swift */; };
 		4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B422F367CAF00FD1533 /* SetupTab.swift */; };
 		4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		F00000011 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F00000012 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4E5B5B402F367AF000FD1533 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4E5B5B422F367CAF00FD1533 /* SetupTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTab.swift; sourceTree = "<group>"; };
 		4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTab.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				D02000001 /* Protocols */,
 				B00000007 /* BrowserDetectionService.swift */,
+				F00000012 /* Logger.swift */,
 				B00000008 /* ProfileDetectionService.swift */,
 				B00000009 /* URLLaunchService.swift */,
 				B00000010 /* SettingsService.swift */,
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F00000001 /* Constants.swift in Sources */,
+				F00000002 /* Logger.swift in Sources */,
 				4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */,
 				B01000001 /* BowzerApp.swift in Sources */,
 				4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */,

@@ -10,21 +10,27 @@ class URLLaunchService {
 
     func launch(url: URL, with item: BrowserDisplayItem) {
         guard let params = getLaunchParameters(for: url, with: item) else {
+            Log.launch.error("Failed to get launch parameters for \(item.browser.name)")
             return
         }
 
+        Log.launch.info("Launching \(url.absoluteString) with \(item.displayName)")
+
         do {
             try processLauncher.launch(executableURL: params.executableURL, arguments: params.arguments)
+            Log.launch.debug("Successfully launched browser")
         } catch {
-            print("Failed to launch browser: \(error.localizedDescription)")
+            Log.launch.error("Failed to launch browser: \(error.localizedDescription)")
 
             // If profile launch failed, try fallback to bundle ID launch
             if item.profile != nil {
+                Log.launch.info("Attempting fallback launch without profile")
                 let fallbackParams = getBundleIdLaunchParameters(for: url, bundleId: item.browser.bundleIdentifier)
                 do {
                     try processLauncher.launch(executableURL: fallbackParams.executableURL, arguments: fallbackParams.arguments)
+                    Log.launch.debug("Fallback launch succeeded")
                 } catch {
-                    print("Fallback launch also failed: \(error.localizedDescription)")
+                    Log.launch.error("Fallback launch failed: \(error.localizedDescription)")
                 }
             }
         }

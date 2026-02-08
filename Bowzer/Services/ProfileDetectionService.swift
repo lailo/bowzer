@@ -34,10 +34,10 @@ class ProfileDetectionService {
     }
 
     func detectChromiumProfiles(for browserType: BrowserType) -> [BrowserProfile] {
-        print("[Profile] Detecting for \(browserType.rawValue)")
+        Log.profile.debug("Detecting profiles for \(browserType.rawValue)")
 
         guard let folderName = browserType.applicationSupportFolder else {
-            print("[Profile] No folder name for \(browserType.rawValue)")
+            Log.profile.debug("No folder name for \(browserType.rawValue)")
             return []
         }
 
@@ -46,51 +46,50 @@ class ProfileDetectionService {
             .appendingPathComponent(folderName)
 
         let localStatePath = appSupport.appendingPathComponent("Local State")
-        print("[Profile] Path: \(localStatePath.path)")
+        Log.profile.debug("Reading Local State from \(localStatePath.path)")
 
         guard fileManager.fileExists(atPath: localStatePath.path) else {
-            print("[Profile] File not found at \(localStatePath.path)")
+            Log.profile.debug("Local State file not found at \(localStatePath.path)")
             return []
         }
 
         guard let data = fileManager.contents(atPath: localStatePath.path) else {
-            print("[Profile] Failed to read data from \(localStatePath.path)")
+            Log.profile.warning("Failed to read data from \(localStatePath.path)")
             return []
         }
-        print("[Profile] Read \(data.count) bytes")
+        Log.profile.debug("Read \(data.count) bytes from Local State")
 
         return parseChromiumLocalState(data: data, browserType: browserType)
     }
 
-    // Extracted for testability with raw data
     func parseChromiumLocalState(data: Data, browserType: BrowserType) -> [BrowserProfile] {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-            print("[Profile] Failed to parse JSON")
+            Log.profile.warning("Failed to parse Local State JSON for \(browserType.rawValue)")
             return []
         }
 
         guard let profileInfo = json["profile"] as? [String: Any] else {
-            print("[Profile] No 'profile' key in JSON")
+            Log.profile.debug("No 'profile' key in Local State JSON")
             return []
         }
 
         guard let infoCache = profileInfo["info_cache"] as? [String: Any] else {
-            print("[Profile] No 'info_cache' in profile")
+            Log.profile.debug("No 'info_cache' in profile data")
             return []
         }
 
-        print("[Profile] Found \(infoCache.count) profiles in info_cache")
+        Log.profile.debug("Found \(infoCache.count) profiles in info_cache")
 
         var profiles: [BrowserProfile] = []
 
         for (directoryName, profileData) in infoCache {
             guard let profileDict = profileData as? [String: Any],
                   let name = profileDict["name"] as? String else {
-                print("[Profile] Skipping \(directoryName) - invalid data")
+                Log.profile.debug("Skipping profile \(directoryName) - invalid data")
                 continue
             }
 
-            print("[Profile] Adding profile: \(name) (\(directoryName))")
+            Log.profile.debug("Found profile: \(name) (\(directoryName))")
             let profile = BrowserProfile(
                 id: "\(browserType.rawValue)_\(directoryName)",
                 name: name,
@@ -106,7 +105,7 @@ class ProfileDetectionService {
             return p1.name.localizedCaseInsensitiveCompare(p2.name) == .orderedAscending
         }
 
-        print("[Profile] Returning \(profiles.count) profiles for \(browserType.rawValue)")
+        Log.profile.info("Detected \(profiles.count) profiles for \(browserType.rawValue)")
         return profiles
     }
 
@@ -117,13 +116,13 @@ class ProfileDetectionService {
         guard fileManager.fileExists(atPath: profilesIniPath.path),
               let data = fileManager.contents(atPath: profilesIniPath.path),
               let contents = String(data: data, encoding: .utf8) else {
+            Log.profile.debug("Firefox profiles.ini not found or unreadable")
             return []
         }
 
         return parseFirefoxProfilesIni(contents: contents)
     }
 
-    // Extracted for testability with raw contents
     func parseFirefoxProfilesIni(contents: String) -> [BrowserProfile] {
         var profiles: [BrowserProfile] = []
         var currentProfile: (name: String?, path: String?, isRelative: Bool)?
@@ -161,6 +160,7 @@ class ProfileDetectionService {
             profiles.append(profile)
         }
 
+        Log.profile.info("Detected \(profiles.count) Firefox profiles")
         return profiles
     }
 }
