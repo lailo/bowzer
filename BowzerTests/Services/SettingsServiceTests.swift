@@ -124,4 +124,114 @@ final class SettingsServiceTests: XCTestCase {
         XCTAssertEqual(loaded?.showProfileLabels, false)
         XCTAssertEqual(loaded?.showMenuBarIcon, false)
     }
+
+    // MARK: - Ghost Browser Cleanup Tests
+
+    func testCleanupStaleBrowserEntries_RemovesUninstalledFromOrder() {
+        // Given - Settings with browser order including uninstalled browser
+        let appState = AppState()
+        appState.settings.browserOrder = [
+            "com.google.Chrome_default",
+            "com.uninstalled.Browser_default",
+            "com.apple.Safari_default"
+        ]
+        service.appState = appState
+
+        let installedBrowserIds: Set<String> = ["com.google.Chrome", "com.apple.Safari"]
+
+        // When
+        service.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
+        // Then - Uninstalled browser should be removed
+        XCTAssertEqual(appState.settings.browserOrder, [
+            "com.google.Chrome_default",
+            "com.apple.Safari_default"
+        ])
+    }
+
+    func testCleanupStaleBrowserEntries_RemovesUninstalledFromHidden() {
+        // Given - Settings with hidden browser including uninstalled browser
+        let appState = AppState()
+        appState.settings.hiddenBrowsers = [
+            "com.google.Chrome_Profile1",
+            "com.uninstalled.Browser_default"
+        ]
+        service.appState = appState
+
+        let installedBrowserIds: Set<String> = ["com.google.Chrome", "com.apple.Safari"]
+
+        // When
+        service.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
+        // Then - Uninstalled browser should be removed from hidden
+        XCTAssertEqual(appState.settings.hiddenBrowsers, [
+            "com.google.Chrome_Profile1"
+        ])
+    }
+
+    func testCleanupStaleBrowserEntries_PreservesInstalledBrowsers() {
+        // Given - Settings with only installed browsers
+        let appState = AppState()
+        appState.settings.browserOrder = [
+            "com.google.Chrome_default",
+            "com.apple.Safari_default"
+        ]
+        appState.settings.hiddenBrowsers = [
+            "com.google.Chrome_Work"
+        ]
+        service.appState = appState
+
+        let installedBrowserIds: Set<String> = ["com.google.Chrome", "com.apple.Safari"]
+
+        // When
+        service.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
+        // Then - Nothing should change
+        XCTAssertEqual(appState.settings.browserOrder, [
+            "com.google.Chrome_default",
+            "com.apple.Safari_default"
+        ])
+        XCTAssertEqual(appState.settings.hiddenBrowsers, [
+            "com.google.Chrome_Work"
+        ])
+    }
+
+    func testCleanupStaleBrowserEntries_HandlesProfileSuffix() {
+        // Given - Browser entries with profile suffixes
+        let appState = AppState()
+        appState.settings.browserOrder = [
+            "com.google.Chrome_Default",
+            "com.google.Chrome_Profile 1",
+            "com.uninstalled.Browser_Work Profile"
+        ]
+        service.appState = appState
+
+        let installedBrowserIds: Set<String> = ["com.google.Chrome"]
+
+        // When
+        service.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
+        // Then - Chrome profiles should be preserved, uninstalled removed
+        XCTAssertEqual(appState.settings.browserOrder, [
+            "com.google.Chrome_Default",
+            "com.google.Chrome_Profile 1"
+        ])
+    }
+
+    func testCleanupStaleBrowserEntries_NoChangesWhenEmpty() {
+        // Given - Empty settings
+        let appState = AppState()
+        appState.settings.browserOrder = []
+        appState.settings.hiddenBrowsers = []
+        service.appState = appState
+
+        let installedBrowserIds: Set<String> = ["com.google.Chrome"]
+
+        // When
+        service.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
+        // Then - Should remain empty
+        XCTAssertEqual(appState.settings.browserOrder, [])
+        XCTAssertEqual(appState.settings.hiddenBrowsers, [])
+    }
 }

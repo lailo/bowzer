@@ -35,9 +35,9 @@
 - [ ] **Read version from bundle** - currently hardcoded as "1.0" in AboutView
 
 ### Settings & Persistence
-- [ ] **Add settings save debouncing** - prevent multiple writes when rapidly toggling browsers
-- [ ] **Clean up ghost browser entries** - remove uninstalled browsers from settings
-- [ ] **Validate Launch at Login setup** - check entitlements before attempting SMAppService registration
+- [x] **Add settings save debouncing** - prevent multiple writes when rapidly toggling browsers
+- [x] **Clean up ghost browser entries** - remove uninstalled browsers from settings
+- [x] **Validate Launch at Login setup** - check entitlements before attempting SMAppService registration
 
 ## Lower Priority
 

@@ -57,6 +57,11 @@ class AppState: ObservableObject {
     func refreshBrowsers() {
         browserDetectionService.detectBrowsers()
         profileDetectionService.detectAllProfiles(for: browsers)
+
+        // Clean up settings entries for uninstalled browsers
+        let installedBrowserIds = Set(browsers.map { $0.bundleIdentifier })
+        settingsService.cleanupStaleBrowserEntries(installedBrowserIds: installedBrowserIds)
+
         applyBrowserOrder()
     }
 
