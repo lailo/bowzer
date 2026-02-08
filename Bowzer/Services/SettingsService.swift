@@ -12,44 +12,79 @@ class SettingsService {
     }
 
     func loadSettings() {
-        guard let data = userDefaults.data(forKey: settingsKey),
-              let settings = try? JSONDecoder().decode(AppSettings.self, from: data) else {
-            return
+        switch loadSettingsWithResult() {
+        case .success(let settings):
+            appState?.settings = settings
+        case .failure(let error):
+            Log.settings.warning("\(error.localizedDescription). Using defaults.")
+        }
+    }
+
+    func loadSettingsWithResult() -> Result<AppSettings, BowzerError> {
+        guard let data = userDefaults.data(forKey: settingsKey) else {
+            return .success(AppSettings()) // No saved settings, use defaults
         }
 
-        appState?.settings = settings
+        do {
+            let settings = try JSONDecoder().decode(AppSettings.self, from: data)
+            return .success(settings)
+        } catch {
+            Log.settings.error("Failed to decode settings: \(error.localizedDescription)")
+            return .failure(.settingsDecodingFailed)
+        }
     }
 
     // Testable version that returns settings
     func loadSettingsResult() -> AppSettings? {
-        guard let data = userDefaults.data(forKey: settingsKey),
-              let settings = try? JSONDecoder().decode(AppSettings.self, from: data) else {
-            return nil
+        if case .success(let settings) = loadSettingsWithResult() {
+            return settings
         }
-        return settings
+        return nil
     }
 
     func saveSettings() {
-        guard let settings = appState?.settings,
-              let data = try? JSONEncoder().encode(settings) else {
-            return
+        if case .failure(let error) = saveSettingsWithResult() {
+            Log.settings.error("\(error.localizedDescription)")
+        }
+    }
+
+    func saveSettingsWithResult() -> Result<Void, BowzerError> {
+        guard let settings = appState?.settings else {
+            return .failure(.settingsEncodingFailed)
         }
 
-        userDefaults.set(data, forKey: settingsKey)
-        NotificationCenter.default.post(name: .settingsDidChange, object: nil)
+        do {
+            let data = try JSONEncoder().encode(settings)
+            userDefaults.set(data, forKey: settingsKey)
+            NotificationCenter.default.post(name: .settingsDidChange, object: nil)
+            return .success(())
+        } catch {
+            Log.settings.error("Failed to encode settings: \(error.localizedDescription)")
+            return .failure(.settingsEncodingFailed)
+        }
     }
 
     // Testable version that takes settings as parameter
     func saveSettings(_ settings: AppSettings) {
-        guard let data = try? JSONEncoder().encode(settings) else {
-            return
+        do {
+            let data = try JSONEncoder().encode(settings)
+            userDefaults.set(data, forKey: settingsKey)
+        } catch {
+            Log.settings.error("Failed to encode settings: \(error.localizedDescription)")
         }
-        userDefaults.set(data, forKey: settingsKey)
     }
 
     func setLaunchAtLogin(_ enabled: Bool) {
         appState?.settings.launchAtLogin = enabled
 
+        if case .failure(let error) = setLaunchAtLoginWithResult(enabled) {
+            Log.settings.error("\(error.localizedDescription)")
+        }
+
+        saveSettings()
+    }
+
+    func setLaunchAtLoginWithResult(_ enabled: Bool) -> Result<Void, BowzerError> {
         if #available(macOS 13.0, *) {
             do {
                 if enabled {
@@ -57,12 +92,12 @@ class SettingsService {
                 } else {
                     try SMAppService.mainApp.unregister()
                 }
+                return .success(())
             } catch {
-                Log.settings.error("Failed to \(enabled ? "enable" : "disable") launch at login: \(error.localizedDescription)")
+                return .failure(.launchAtLoginFailed(enabled: enabled, reason: error.localizedDescription))
             }
         }
-
-        saveSettings()
+        return .success(())
     }
 
     func isLaunchAtLoginEnabled() -> Bool {

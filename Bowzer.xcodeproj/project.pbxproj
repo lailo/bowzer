@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F00000001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000011 /* Constants.swift */; };
 		F00000002 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000012 /* Logger.swift */; };
+		F00000003 /* BowzerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000013 /* BowzerError.swift */; };
 		4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B402F367AF000FD1533 /* AboutView.swift */; };
 		4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B422F367CAF00FD1533 /* SetupTab.swift */; };
 		4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		F00000011 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F00000012 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F00000013 /* BowzerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerError.swift; sourceTree = "<group>"; };
 		4E5B5B402F367AF000FD1533 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4E5B5B422F367CAF00FD1533 /* SetupTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTab.swift; sourceTree = "<group>"; };
 		4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTab.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		B02000003 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F00000013 /* BowzerError.swift */,
 				B00000004 /* Browser.swift */,
 				B00000005 /* BrowserProfile.swift */,
 				B00000006 /* Settings.swift */,
@@ -407,6 +410,7 @@
 			files = (
 				F00000001 /* Constants.swift in Sources */,
 				F00000002 /* Logger.swift in Sources */,
+				F00000003 /* BowzerError.swift in Sources */,
 				4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */,
 				B01000001 /* BowzerApp.swift in Sources */,
 				4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */,

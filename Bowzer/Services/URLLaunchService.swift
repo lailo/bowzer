@@ -8,10 +8,19 @@ class URLLaunchService {
         self.processLauncher = processLauncher
     }
 
+    /// Launches a URL with the specified browser/profile, with automatic fallback
     func launch(url: URL, with item: BrowserDisplayItem) {
+        let result = launchWithResult(url: url, with: item)
+        if case .failure(let error) = result {
+            Log.launch.error("\(error.localizedDescription)")
+        }
+    }
+
+    /// Launches a URL and returns the result for error handling
+    func launchWithResult(url: URL, with item: BrowserDisplayItem) -> Result<Void, BowzerError> {
         guard let params = getLaunchParameters(for: url, with: item) else {
-            Log.launch.error("Failed to get launch parameters for \(item.browser.name)")
-            return
+            let error = BowzerError.launchFailed(browser: item.browser.name, reason: "Could not determine launch parameters")
+            return .failure(error)
         }
 
         Log.launch.info("Launching \(url.absoluteString) with \(item.displayName)")
@@ -19,6 +28,7 @@ class URLLaunchService {
         do {
             try processLauncher.launch(executableURL: params.executableURL, arguments: params.arguments)
             Log.launch.debug("Successfully launched browser")
+            return .success(())
         } catch {
             Log.launch.error("Failed to launch browser: \(error.localizedDescription)")
 
@@ -29,10 +39,14 @@ class URLLaunchService {
                 do {
                     try processLauncher.launch(executableURL: fallbackParams.executableURL, arguments: fallbackParams.arguments)
                     Log.launch.debug("Fallback launch succeeded")
-                } catch {
-                    Log.launch.error("Fallback launch failed: \(error.localizedDescription)")
+                    return .success(())
+                } catch let fallbackError {
+                    Log.launch.error("Fallback launch failed: \(fallbackError.localizedDescription)")
+                    return .failure(.launchFailed(browser: item.browser.name, reason: fallbackError.localizedDescription))
                 }
             }
+
+            return .failure(.launchFailed(browser: item.browser.name, reason: error.localizedDescription))
         }
     }
 

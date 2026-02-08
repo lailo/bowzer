@@ -33,9 +33,15 @@ final class SettingsServiceTests: XCTestCase {
         XCTAssertTrue(mockUserDefaults.storage["BowzerSettings"] is Data)
     }
 
-    func testLoadSettingsResult_ReturnsNilWhenEmpty() {
+    func testLoadSettingsResult_ReturnsDefaultsWhenEmpty() {
         let settings = service.loadSettingsResult()
-        XCTAssertNil(settings)
+        XCTAssertNotNil(settings)
+        // Should return default settings when no saved data exists
+        XCTAssertEqual(settings?.browserOrder, [])
+        XCTAssertEqual(settings?.hiddenBrowsers, [])
+        XCTAssertEqual(settings?.launchAtLogin, false)
+        XCTAssertEqual(settings?.showProfileLabels, true)
+        XCTAssertEqual(settings?.showMenuBarIcon, true)
     }
 
     func testLoadSettingsResult_ReturnsStoredSettings() {
