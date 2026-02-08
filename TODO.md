@@ -4,13 +4,13 @@
 
 ### Code Quality
 - [x] **Eliminate duplicate code in services** - `detectBrowsers()` and `detectBrowsersResult()` are 95% identical in `BrowserDetectionService.swift`, same pattern in `ProfileDetectionService` and `URLLaunchService`
-- [ ] **Implement proper error handling** - errors are currently `print()`ed and silently swallowed, no user feedback when launches fail
+- [x] **Implement proper error handling** - errors are currently `print()`ed and silently swallowed, no user feedback when launches fail
 - [x] **Replace magic numbers with constants** - hardcoded values like `keyCode == 53` for Escape, `42` for icon positioning
 
 ### Architecture
 - [ ] **Refactor AppState** - currently a god object managing browsers, settings, 4 services, and display items
 - [x] **Add logging framework** - replace 17+ bare `print()` statements with os.log
-- [ ] **Decouple views from services** - views directly call multiple services in sequence (e.g., `BrowsersTab.swift:56-59`)
+- [x] **Decouple views from services** - views directly call multiple services in sequence (e.g., `BrowsersTab.swift:56-59`)
 
 ### Test Coverage
 - [ ] **Add AppDelegate tests** - 193 lines of critical lifecycle code with no tests
