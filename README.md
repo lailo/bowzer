@@ -6,6 +6,10 @@ A lightweight macOS browser picker that lets you choose which browser to open li
 [![Release](https://github.com/lailo/bowzer/actions/workflows/release.yml/badge.svg)](https://github.com/lailo/bowzer/actions/workflows/release.yml)
 [![Latest Release](https://img.shields.io/github/v/release/lailo/bowzer)](https://github.com/lailo/bowzer/releases/latest)
 
+<p align="center">
+  <img src="demo.gif" alt="Bowzer demo" width="600">
+</p>
+
 ## Download
 
 **[Download Latest Release](https://github.com/lailo/bowzer/releases/latest)**
