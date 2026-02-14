@@ -1,6 +1,6 @@
 cask "bowzer" do
-  version "1.0.0"
-  sha256 "68c75b922ff9dfe710630b2a171e02a85af1e85b9a7ed0264f7eb2e8d2dd972b"
+  version "1.1.0"
+  sha256 "313e17bc92094af6c6f7a0391e6588985dfebbae58797d1a0fd0b5210c54bf29"
 
   url "https://github.com/lailo/bowzer/releases/download/v#{version}/Bowzer-#{version}.zip"
   name "Bowzer"
