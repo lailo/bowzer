@@ -6,11 +6,6 @@ A lightweight macOS browser picker that lets you choose which browser to open li
 [![Release](https://github.com/lailo/bowzer/actions/workflows/release.yml/badge.svg)](https://github.com/lailo/bowzer/actions/workflows/release.yml)
 [![Latest Release](https://img.shields.io/github/v/release/lailo/bowzer)](https://github.com/lailo/bowzer/releases/latest)
 
-## Download
-
-**[Download Latest Release](https://github.com/lailo/bowzer/releases/latest)**
-
-Or download a specific version from the [Releases](https://github.com/lailo/bowzer/releases) page.
   <img src="Bowzer/Resources/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" alt="Bowzer icon" width="256">
 
 ## Features
@@ -46,7 +41,7 @@ brew uninstall --cask bowzer # Uninstall
 
 ### Manual Installation
 
-1. Download the latest release from the link above
+1. [Download the latest release](https://github.com/lailo/bowzer/releases/latest) or download a specific version from the [Releases](https://github.com/lailo/bowzer/releases) page.
 2. Unzip and drag `Bowzer.app` to your Applications folder
 3. Open Bowzer and follow the setup instructions to set it as your default browser
 
