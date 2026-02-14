@@ -1,0 +1,799 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B402F367AF000FD1533 /* AboutView.swift */; };
+		4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B422F367CAF00FD1533 /* SetupTab.swift */; };
+		4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */; };
+		4E5B5B472F367CC000FD1533 /* PreferencesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */; };
+		B01000001 /* BowzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000001 /* BowzerApp.swift */; };
+		B01000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000002 /* AppDelegate.swift */; };
+		B01000003 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000003 /* AppState.swift */; };
+		B01000004 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000004 /* Browser.swift */; };
+		B01000005 /* BrowserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000005 /* BrowserProfile.swift */; };
+		B01000006 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000006 /* Settings.swift */; };
+		B01000007 /* BrowserDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000007 /* BrowserDetectionService.swift */; };
+		B01000008 /* ProfileDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000008 /* ProfileDetectionService.swift */; };
+		B01000009 /* URLLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000009 /* URLLaunchService.swift */; };
+		B01000010 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000010 /* SettingsService.swift */; };
+		B01000011 /* PickerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000011 /* PickerWindowController.swift */; };
+		B01000012 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000012 /* PickerView.swift */; };
+		B01000013 /* BrowserItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000013 /* BrowserItemView.swift */; };
+		B01000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00000014 /* SettingsView.swift */; };
+		C00000001 /* BowzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000011 /* BowzerTests.swift */; };
+		D00000001 /* WorkspaceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000011 /* WorkspaceProviding.swift */; };
+		D00000002 /* FileManagerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000012 /* FileManagerProviding.swift */; };
+		D00000003 /* ProcessLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000013 /* ProcessLaunching.swift */; };
+		D00000004 /* UserDefaultsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00000014 /* UserDefaultsProviding.swift */; };
+		E00000001 /* MockWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000011 /* MockWorkspace.swift */; };
+		E00000002 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000012 /* MockFileManager.swift */; };
+		E00000003 /* MockProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000013 /* MockProcess.swift */; };
+		E00000004 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000014 /* MockUserDefaults.swift */; };
+		E00000005 /* ProfileDetectionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000015 /* ProfileDetectionServiceTests.swift */; };
+		E00000006 /* URLLaunchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000016 /* URLLaunchServiceTests.swift */; };
+		E00000007 /* SettingsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000017 /* SettingsServiceTests.swift */; };
+		E00000008 /* BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000018 /* BrowserTests.swift */; };
+		E00000009 /* BrowserProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000019 /* BrowserProfileTests.swift */; };
+		E00000010 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000020 /* AppSettingsTests.swift */; };
+		F00000001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000011 /* Constants.swift */; };
+		F00000002 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000012 /* Logger.swift */; };
+		F00000003 /* BowzerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00000013 /* BowzerError.swift */; };
+		L00000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = L00000011 /* Localizable.xcstrings */; };
+		T00000001 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000011 /* AppStateTests.swift */; };
+		T00000002 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000012 /* IntegrationTests.swift */; };
+		T00000003 /* ErrorScenarioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = T00000013 /* ErrorScenarioTests.swift */; };
+		V00000001 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = V00000002 /* ViewInspector */; };
+		V00000003 /* ViewTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000010 /* ViewTestHelpers.swift */; };
+		V00000004 /* ViewInspectable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000011 /* ViewInspectable+Extensions.swift */; };
+		V00000005 /* BrowserItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000012 /* BrowserItemViewTests.swift */; };
+		V00000006 /* PickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000013 /* PickerViewTests.swift */; };
+		V00000007 /* BrowsersTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000014 /* BrowsersTabTests.swift */; };
+		V00000008 /* PreferencesTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = V00000015 /* PreferencesTabTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C00000030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B05000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B03000001;
+			remoteInfo = Bowzer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4E5B5B402F367AF000FD1533 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		4E5B5B422F367CAF00FD1533 /* SetupTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTab.swift; sourceTree = "<group>"; };
+		4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTab.swift; sourceTree = "<group>"; };
+		4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTab.swift; sourceTree = "<group>"; };
+		B00000001 /* BowzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerApp.swift; sourceTree = "<group>"; };
+		B00000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B00000003 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		B00000004 /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		B00000005 /* BrowserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserProfile.swift; sourceTree = "<group>"; };
+		B00000006 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B00000007 /* BrowserDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserDetectionService.swift; sourceTree = "<group>"; };
+		B00000008 /* ProfileDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetectionService.swift; sourceTree = "<group>"; };
+		B00000009 /* URLLaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLaunchService.swift; sourceTree = "<group>"; };
+		B00000010 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		B00000011 /* PickerWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerWindowController.swift; sourceTree = "<group>"; };
+		B00000012 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		B00000013 /* BrowserItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserItemView.swift; sourceTree = "<group>"; };
+		B00000014 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B00000015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B00000016 /* Bowzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bowzer.entitlements; sourceTree = "<group>"; };
+		B00000017 /* Bowzer-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bowzer-Debug.entitlements"; sourceTree = "<group>"; };
+		B00000100 /* Bowzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bowzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00000010 /* BowzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00000011 /* BowzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerTests.swift; sourceTree = "<group>"; };
+		D00000011 /* WorkspaceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceProviding.swift; sourceTree = "<group>"; };
+		D00000012 /* FileManagerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerProviding.swift; sourceTree = "<group>"; };
+		D00000013 /* ProcessLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessLaunching.swift; sourceTree = "<group>"; };
+		D00000014 /* UserDefaultsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProviding.swift; sourceTree = "<group>"; };
+		E00000011 /* MockWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWorkspace.swift; sourceTree = "<group>"; };
+		E00000012 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
+		E00000013 /* MockProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProcess.swift; sourceTree = "<group>"; };
+		E00000014 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		E00000015 /* ProfileDetectionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetectionServiceTests.swift; sourceTree = "<group>"; };
+		E00000016 /* URLLaunchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLaunchServiceTests.swift; sourceTree = "<group>"; };
+		E00000017 /* SettingsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceTests.swift; sourceTree = "<group>"; };
+		E00000018 /* BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTests.swift; sourceTree = "<group>"; };
+		E00000019 /* BrowserProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserProfileTests.swift; sourceTree = "<group>"; };
+		E00000020 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
+		F00000011 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F00000012 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F00000013 /* BowzerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowzerError.swift; sourceTree = "<group>"; };
+		L00000011 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		T00000011 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		T00000012 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		T00000013 /* ErrorScenarioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScenarioTests.swift; sourceTree = "<group>"; };
+		V00000010 /* ViewTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTestHelpers.swift; sourceTree = "<group>"; };
+		V00000011 /* ViewInspectable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewInspectable+Extensions.swift"; sourceTree = "<group>"; };
+		V00000012 /* BrowserItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserItemViewTests.swift; sourceTree = "<group>"; };
+		V00000013 /* PickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTests.swift; sourceTree = "<group>"; };
+		V00000014 /* BrowsersTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsersTabTests.swift; sourceTree = "<group>"; };
+		V00000015 /* PreferencesTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabTests.swift; sourceTree = "<group>"; };
+		SC0000001 /* ci-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ci-build.sh"; sourceTree = "<group>"; };
+		SC0000002 /* ci-test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ci-test.sh"; sourceTree = "<group>"; };
+		SC0000003 /* ci-release.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ci-release.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B00100001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C00100001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				V00000001 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B02000000 = {
+			isa = PBXGroup;
+			children = (
+				B02000001 /* Bowzer */,
+				C02000001 /* BowzerTests */,
+				SC0000010 /* scripts */,
+				B02000100 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B02000001 /* Bowzer */ = {
+			isa = PBXGroup;
+			children = (
+				B02000002 /* App */,
+				B02000003 /* Models */,
+				B02000004 /* Services */,
+				B02000005 /* Views */,
+				B02000006 /* Resources */,
+				F00000011 /* Constants.swift */,
+				B00000016 /* Bowzer.entitlements */,
+				B00000017 /* Bowzer-Debug.entitlements */,
+			);
+			path = Bowzer;
+			sourceTree = "<group>";
+		};
+		B02000002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B00000001 /* BowzerApp.swift */,
+				B00000002 /* AppDelegate.swift */,
+				B00000003 /* AppState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B02000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F00000013 /* BowzerError.swift */,
+				B00000004 /* Browser.swift */,
+				B00000005 /* BrowserProfile.swift */,
+				B00000006 /* Settings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B02000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D02000001 /* Protocols */,
+				B00000007 /* BrowserDetectionService.swift */,
+				F00000012 /* Logger.swift */,
+				B00000008 /* ProfileDetectionService.swift */,
+				B00000009 /* URLLaunchService.swift */,
+				B00000010 /* SettingsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B02000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B02000007 /* PickerWindow */,
+				B02000008 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B02000006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B00000015 /* Info.plist */,
+				L00000011 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B02000007 /* PickerWindow */ = {
+			isa = PBXGroup;
+			children = (
+				B00000011 /* PickerWindowController.swift */,
+				B00000012 /* PickerView.swift */,
+				B00000013 /* BrowserItemView.swift */,
+				4E5B5B402F367AF000FD1533 /* AboutView.swift */,
+			);
+			path = PickerWindow;
+			sourceTree = "<group>";
+		};
+		B02000008 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4E5B5B442F367CBC00FD1533 /* BrowsersTab.swift */,
+				B00000014 /* SettingsView.swift */,
+				4E5B5B422F367CAF00FD1533 /* SetupTab.swift */,
+				4E5B5B462F367CC000FD1533 /* PreferencesTab.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B02000100 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B00000100 /* Bowzer.app */,
+				C00000010 /* BowzerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C02000001 /* BowzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				T02000001 /* App */,
+				T02000002 /* Integration */,
+				E02000001 /* Mocks */,
+				E02000002 /* Services */,
+				E02000003 /* Models */,
+				V02000001 /* ViewTests */,
+				C00000011 /* BowzerTests.swift */,
+			);
+			path = BowzerTests;
+			sourceTree = "<group>";
+		};
+		D02000001 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D00000011 /* WorkspaceProviding.swift */,
+				D00000012 /* FileManagerProviding.swift */,
+				D00000013 /* ProcessLaunching.swift */,
+				D00000014 /* UserDefaultsProviding.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E02000001 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E00000011 /* MockWorkspace.swift */,
+				E00000012 /* MockFileManager.swift */,
+				E00000013 /* MockProcess.swift */,
+				E00000014 /* MockUserDefaults.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E02000002 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E00000015 /* ProfileDetectionServiceTests.swift */,
+				E00000016 /* URLLaunchServiceTests.swift */,
+				E00000017 /* SettingsServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E02000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E00000018 /* BrowserTests.swift */,
+				E00000019 /* BrowserProfileTests.swift */,
+				E00000020 /* AppSettingsTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		T02000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				T00000011 /* AppStateTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		T02000002 /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				T00000012 /* IntegrationTests.swift */,
+				T00000013 /* ErrorScenarioTests.swift */,
+			);
+			path = Integration;
+			sourceTree = "<group>";
+		};
+		V02000001 /* ViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				V00000010 /* ViewTestHelpers.swift */,
+				V00000011 /* ViewInspectable+Extensions.swift */,
+				V00000012 /* BrowserItemViewTests.swift */,
+				V00000013 /* PickerViewTests.swift */,
+				V00000014 /* BrowsersTabTests.swift */,
+				V00000015 /* PreferencesTabTests.swift */,
+			);
+			path = ViewTests;
+			sourceTree = "<group>";
+		};
+		SC0000010 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				SC0000001 /* ci-build.sh */,
+				SC0000003 /* ci-release.sh */,
+				SC0000002 /* ci-test.sh */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B03000001 /* Bowzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04000003 /* Build configuration list for PBXNativeTarget "Bowzer" */;
+			buildPhases = (
+				B03000002 /* Sources */,
+				B00100001 /* Frameworks */,
+				B03000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bowzer;
+			productName = Bowzer;
+			productReference = B00000100 /* Bowzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C03000001 /* BowzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C04000001 /* Build configuration list for PBXNativeTarget "BowzerTests" */;
+			buildPhases = (
+				C03000002 /* Sources */,
+				C00100001 /* Frameworks */,
+				C03000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C03000010 /* PBXTargetDependency */,
+			);
+			name = BowzerTests;
+			packageProductDependencies = (
+				V00000002 /* ViewInspector */,
+			);
+			productName = BowzerTests;
+			productReference = C00000010 /* BowzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B05000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					B03000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C03000001 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = B03000001;
+					};
+				};
+			};
+			buildConfigurationList = B04000001 /* Build configuration list for PBXProject "Bowzer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				de,
+				es,
+				fr,
+				it,
+				pt,
+				Base,
+			);
+			mainGroup = B02000000;
+			packageReferences = (
+				V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
+			productRefGroup = B02000100 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B03000001 /* Bowzer */,
+				C03000001 /* BowzerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B03000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				L00000001 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B03000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F00000001 /* Constants.swift in Sources */,
+				F00000002 /* Logger.swift in Sources */,
+				F00000003 /* BowzerError.swift in Sources */,
+				4E5B5B452F367CBC00FD1533 /* BrowsersTab.swift in Sources */,
+				B01000001 /* BowzerApp.swift in Sources */,
+				4E5B5B432F367CAF00FD1533 /* SetupTab.swift in Sources */,
+				B01000002 /* AppDelegate.swift in Sources */,
+				B01000003 /* AppState.swift in Sources */,
+				B01000004 /* Browser.swift in Sources */,
+				4E5B5B412F367AF000FD1533 /* AboutView.swift in Sources */,
+				B01000005 /* BrowserProfile.swift in Sources */,
+				B01000006 /* Settings.swift in Sources */,
+				B01000007 /* BrowserDetectionService.swift in Sources */,
+				B01000008 /* ProfileDetectionService.swift in Sources */,
+				B01000009 /* URLLaunchService.swift in Sources */,
+				4E5B5B472F367CC000FD1533 /* PreferencesTab.swift in Sources */,
+				B01000010 /* SettingsService.swift in Sources */,
+				B01000011 /* PickerWindowController.swift in Sources */,
+				B01000012 /* PickerView.swift in Sources */,
+				B01000013 /* BrowserItemView.swift in Sources */,
+				B01000014 /* SettingsView.swift in Sources */,
+				D00000001 /* WorkspaceProviding.swift in Sources */,
+				D00000002 /* FileManagerProviding.swift in Sources */,
+				D00000003 /* ProcessLaunching.swift in Sources */,
+				D00000004 /* UserDefaultsProviding.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C03000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C00000001 /* BowzerTests.swift in Sources */,
+				E00000001 /* MockWorkspace.swift in Sources */,
+				E00000002 /* MockFileManager.swift in Sources */,
+				E00000003 /* MockProcess.swift in Sources */,
+				E00000004 /* MockUserDefaults.swift in Sources */,
+				E00000005 /* ProfileDetectionServiceTests.swift in Sources */,
+				E00000006 /* URLLaunchServiceTests.swift in Sources */,
+				E00000007 /* SettingsServiceTests.swift in Sources */,
+				E00000008 /* BrowserTests.swift in Sources */,
+				E00000009 /* BrowserProfileTests.swift in Sources */,
+				E00000010 /* AppSettingsTests.swift in Sources */,
+				V00000003 /* ViewTestHelpers.swift in Sources */,
+				V00000004 /* ViewInspectable+Extensions.swift in Sources */,
+				V00000005 /* BrowserItemViewTests.swift in Sources */,
+				V00000006 /* PickerViewTests.swift in Sources */,
+				V00000007 /* BrowsersTabTests.swift in Sources */,
+				V00000008 /* PreferencesTabTests.swift in Sources */,
+				T00000001 /* AppStateTests.swift in Sources */,
+				T00000002 /* IntegrationTests.swift in Sources */,
+				T00000003 /* ErrorScenarioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C03000010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B03000001 /* Bowzer */;
+			targetProxy = C00000030 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B04000101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B04000102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		B04000201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Bowzer/Bowzer-Debug.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Bowzer/Resources/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B04000202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bowzer/Bowzer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Bowzer/Resources/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C04000101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bowzer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bowzer";
+			};
+			name = Debug;
+		};
+		C04000102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bowzer.BowzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bowzer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bowzer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B04000001 /* Build configuration list for PBXProject "Bowzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04000101 /* Debug */,
+				B04000102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B04000003 /* Build configuration list for PBXNativeTarget "Bowzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04000201 /* Debug */,
+				B04000202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C04000001 /* Build configuration list for PBXNativeTarget "BowzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C04000101 /* Debug */,
+				C04000102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		V00000002 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = V00000020 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B05000001 /* Project object */;
+}

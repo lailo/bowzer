@@ -1,0 +1,25 @@
+name: Xcodebuild
+description: Run xcodebuild build or test for Bowzer
+
+inputs:
+  command:
+    description: "xcodebuild command to run (build or test)"
+    required: true
+  configuration:
+    description: "Build configuration"
+    required: false
+    default: Debug
+
+runs:
+  using: composite
+  steps:
+    - name: xcodebuild ${{ inputs.command }}
+      shell: bash
+      run: |
+        set -e
+        xcodebuild ${{ inputs.command }} \
+          -project Bowzer.xcodeproj \
+          -scheme Bowzer \
+          -destination 'platform=macOS' \
+          -configuration ${{ inputs.configuration }} \
+          CODE_SIGNING_ALLOWED=NO

@@ -1,0 +1,25 @@
+name: Release Build
+description: Build Bowzer with ad-hoc signing for release
+
+inputs:
+  version:
+    description: "Version to stamp into the build"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Build Release
+      shell: bash
+      run: |
+        set -e
+        xcodebuild build \
+          -project Bowzer.xcodeproj \
+          -scheme Bowzer \
+          -destination 'platform=macOS' \
+          -configuration Release \
+          -derivedDataPath build \
+          CODE_SIGN_IDENTITY="-" \
+          CODE_SIGNING_REQUIRED=YES \
+          CODE_SIGNING_ALLOWED=YES \
+          MARKETING_VERSION="${{ inputs.version }}"
