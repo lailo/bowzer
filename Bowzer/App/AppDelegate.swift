@@ -128,7 +128,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "globe", accessibilityDescription: "Bowzer")
+            let icon = NSImage(named: "StatusBarIcon")
+            icon?.isTemplate = true
+            button.image = icon
         }
 
         let menu = NSMenu()
