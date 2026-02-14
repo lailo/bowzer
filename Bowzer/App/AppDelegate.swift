@@ -88,6 +88,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Observe settings changes for menu bar visibility using @Observable
         observeMenuBarVisibility()
 
+        // Show settings on first launch to guide setup
+        if !appState.settings.hasCompletedFirstLaunch {
+            appState.settings.hasCompletedFirstLaunch = true
+            appState.saveSettingsImmediately()
+            showSettings()
+        }
+
         // Show picker if launched with testing flag
         if shouldShowPickerForTesting {
             let testURL = URL(string: "https://example.com")!

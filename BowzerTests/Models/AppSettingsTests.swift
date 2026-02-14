@@ -16,6 +16,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.launchAtLogin, false)
         XCTAssertEqual(decoded.showProfileLabels, true)
         XCTAssertEqual(decoded.showMenuBarIcon, true)
+        XCTAssertEqual(decoded.hasCompletedFirstLaunch, false)
     }
 
     func testEncodeDecode_PopulatedSettings() throws {
@@ -24,7 +25,8 @@ final class AppSettingsTests: XCTestCase {
             hiddenBrowsers: ["browser4", "browser5"],
             launchAtLogin: true,
             showProfileLabels: false,
-            showMenuBarIcon: false
+            showMenuBarIcon: false,
+            hasCompletedFirstLaunch: true
         )
 
         let data = try JSONEncoder().encode(settings)
@@ -35,6 +37,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.launchAtLogin, true)
         XCTAssertEqual(decoded.showProfileLabels, false)
         XCTAssertEqual(decoded.showMenuBarIcon, false)
+        XCTAssertEqual(decoded.hasCompletedFirstLaunch, true)
     }
 
     func testEncodeDecode_WithSpecialCharacters() throws {
@@ -61,6 +64,7 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(settings.launchAtLogin, false)
         XCTAssertEqual(settings.showProfileLabels, true)
         XCTAssertEqual(settings.showMenuBarIcon, true)
+        XCTAssertEqual(settings.hasCompletedFirstLaunch, false)
     }
 
     // MARK: - Mutability Tests
@@ -119,6 +123,24 @@ final class AppSettingsTests: XCTestCase {
         XCTAssertEqual(decoded.browserOrder, ["browser1"])
     }
 
+    func testDecode_WithMissingHasCompletedFirstLaunch_UsesDefaultFalse() throws {
+        // Simulate old settings JSON without hasCompletedFirstLaunch
+        let oldSettingsJSON = """
+        {
+            "browserOrder": ["browser1"],
+            "hiddenBrowsers": [],
+            "launchAtLogin": false,
+            "showProfileLabels": true,
+            "showMenuBarIcon": true,
+            "usageCount": {}
+        }
+        """.data(using: .utf8)!
+
+        let decoded = try JSONDecoder().decode(AppSettings.self, from: oldSettingsJSON)
+
+        XCTAssertEqual(decoded.hasCompletedFirstLaunch, false)
+    }
+
     func testDecode_WithMissingUsageCount_UsesEmptyDictionary() throws {
         // Simulate old settings JSON without usageCount
         let oldSettingsJSON = """
@@ -164,6 +186,15 @@ final class AppSettingsTests: XCTestCase {
         var settings = AppSettings()
         settings.incrementUsageCount(for: "new_browser")
         XCTAssertEqual(settings.getUsageCount(for: "new_browser"), 1)
+    }
+
+    func testEncodeDecode_PreservesHasCompletedFirstLaunch() throws {
+        let settings = AppSettings(hasCompletedFirstLaunch: true)
+
+        let data = try JSONEncoder().encode(settings)
+        let decoded = try JSONDecoder().decode(AppSettings.self, from: data)
+
+        XCTAssertEqual(decoded.hasCompletedFirstLaunch, true)
     }
 
     func testEncodeDecode_PreservesUsageCount() throws {

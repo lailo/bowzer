@@ -7,6 +7,7 @@ struct AppSettings: Codable {
     var showProfileLabels: Bool = true
     var showMenuBarIcon: Bool = true
     var usageCount: [String: Int] = [:]  // Maps BrowserDisplayItem IDs to usage counts
+    var hasCompletedFirstLaunch: Bool = false
 
     // Custom decoder to handle missing keys from older saved settings
     init(from decoder: Decoder) throws {
@@ -17,6 +18,7 @@ struct AppSettings: Codable {
         showProfileLabels = try container.decodeIfPresent(Bool.self, forKey: .showProfileLabels) ?? true
         showMenuBarIcon = try container.decodeIfPresent(Bool.self, forKey: .showMenuBarIcon) ?? true
         usageCount = try container.decodeIfPresent([String: Int].self, forKey: .usageCount) ?? [:]
+        hasCompletedFirstLaunch = try container.decodeIfPresent(Bool.self, forKey: .hasCompletedFirstLaunch) ?? false
     }
 
     init(
@@ -25,7 +27,8 @@ struct AppSettings: Codable {
         launchAtLogin: Bool = false,
         showProfileLabels: Bool = true,
         showMenuBarIcon: Bool = true,
-        usageCount: [String: Int] = [:]
+        usageCount: [String: Int] = [:],
+        hasCompletedFirstLaunch: Bool = false
     ) {
         self.browserOrder = browserOrder
         self.hiddenBrowsers = hiddenBrowsers
@@ -33,6 +36,7 @@ struct AppSettings: Codable {
         self.showProfileLabels = showProfileLabels
         self.showMenuBarIcon = showMenuBarIcon
         self.usageCount = usageCount
+        self.hasCompletedFirstLaunch = hasCompletedFirstLaunch
     }
 
     /// Returns the usage count for a specific browser/profile item
