@@ -58,7 +58,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update Homebrew Cask
-        uses: ./.github/actions/update-cask
-        with:
-          version: ${{ steps.version.outputs.VERSION }}
+      - name: Update cask in lailo/homebrew-tap
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          VERSION: ${{ steps.version.outputs.VERSION }}
+        run: |
+          SHA256=$(shasum -a 256 "Bowzer-${VERSION}.zip" | awk '{print $1}')
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/lailo/homebrew-tap.git" tap
+          cd tap
+          sed -i '' "s/version \".*\"/version \"${VERSION}\"/" Casks/bowzer.rb
+          sed -i '' "s/sha256 \".*\"/sha256 \"${SHA256}\"/" Casks/bowzer.rb
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -am "bowzer ${VERSION}"
+          git push

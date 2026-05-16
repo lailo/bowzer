@@ -28,7 +28,7 @@ A lightweight macOS browser picker that lets you choose which browser to open li
 ### Using Homebrew (Recommended)
 
 ```bash
-brew tap lailo/bowzer https://github.com/lailo/bowzer.git
+brew tap lailo/tap
 brew install --cask bowzer
 ```
 
